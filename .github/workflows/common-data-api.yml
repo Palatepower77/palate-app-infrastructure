@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 
 env:
+  REPO_NAME: Palatepower77/palate-app-common-data-api
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: palate-app-common-data-api           # set this to your Amazon ECR repository name
   ECS_SERVICE: common-data-api-service                 # set this to your Amazon ECS service name
@@ -22,7 +23,7 @@ jobs:
     - name: Checkout private tools
       uses: actions/checkout@v3
       with:
-        repository: Palatepower77/palate-app-common-data-api
+        repository: ${{ env.REPO_NAME }}
         token: ${{ secrets.GIT_TOKEN }}
 
     - name: Set up JDK 17
