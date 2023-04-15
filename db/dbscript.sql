@@ -121,6 +121,11 @@ CREATE TABLE IF NOT EXISTS palateapp.dishreview
 	validimage boolean NOT NULL DEFAULT 'true',
 	location geography(Point,4326),
     CONSTRAINT dishreview_pkey PRIMARY KEY (id),
+    CONSTRAINT dishreview_ratingid_fkey FOREIGN KEY (rating)
+        REFERENCES palateapp.dishrating (ratingid) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,	
     CONSTRAINT dishreview_userid_fkey FOREIGN KEY (userid)
         REFERENCES palateapp.userdetail (id) MATCH SIMPLE
         ON UPDATE NO ACTION
