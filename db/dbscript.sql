@@ -64,9 +64,9 @@ CREATE TABLE IF NOT EXISTS palateapp.userselectedpreference
 (
     id BIGSERIAL NOT NULL,
     userid integer,
-	preferenceid integer
+	preferenceid integer,
     preferencevalue character varying COLLATE pg_catalog."default",
-    creationtime time without time zone DEFAULT 'CURRENT_TIMESTAMP',
+	creationtime TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT userselectedpreference_pkey PRIMARY KEY (id),
     CONSTRAINT fk_prefid FOREIGN KEY (preferenceid)
         REFERENCES palateapp.preferencekeys (id) MATCH SIMPLE
@@ -77,7 +77,8 @@ CREATE TABLE IF NOT EXISTS palateapp.userselectedpreference
         REFERENCES palateapp.userdetail (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-        NOT VALID
+        NOT VALID,
+	CONSTRAINT unique_user_preference_combination UNIQUE (userid, preferenceid)
 );
 	
 -- Table: palateapp.vendor
