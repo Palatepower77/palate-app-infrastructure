@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS palateapp.dish
     dishtype character varying COLLATE pg_catalog."default",
     cuisinetype character varying COLLATE pg_catalog."default",
     creationtime timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT dish_pkey PRIMARY KEY (id)
+    CONSTRAINT dish_pkey PRIMARY KEY (id),
+	CONSTRAINT unique_dishname_cuisinetype_combination UNIQUE (dishname, cuisinetype)
 );
 
 -- Table: palateapp.dishrating
