@@ -10,8 +10,10 @@ CREATE TABLE IF NOT EXISTS palateapp.dish
     dishtype character varying COLLATE pg_catalog."default",
     cuisinetype character varying COLLATE pg_catalog."default",
     creationtime timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    userentry boolean NOT NULL DEFAULT 'false',
+    dishtypes character varying[] COLLATE pg_catalog."default",		
     CONSTRAINT dish_pkey PRIMARY KEY (id),
-	CONSTRAINT unique_dishname_cuisinetype_combination UNIQUE (dishname, cuisinetype)
+    CONSTRAINT unique_dishname_cuisinetype_combination UNIQUE (dishname, cuisinetype)
 );
 
 -- Table: palateapp.dishrating
@@ -117,7 +119,7 @@ CREATE TABLE IF NOT EXISTS palateapp.dishreview
 	photoid character varying COLLATE pg_catalog."default",
 	dishprice double precision,
 	vendorid integer,
-	creationtime timestamp with time zone DEFAULT 'CURRENT_TIMESTAMP',
+	creationtime timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
 	dishname character varying COLLATE pg_catalog."default",
 	dishtype character varying COLLATE pg_catalog."default",
 	validimage boolean NOT NULL DEFAULT 'true',
