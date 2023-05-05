@@ -112,34 +112,39 @@ DROP TABLE IF EXISTS palateapp.dishreview cascade;
 
 CREATE TABLE IF NOT EXISTS palateapp.dishreview
 (
-    id BIGSERIAL NOT NULL,
-	userid integer,
-	dishid integer,
-	cuisinetype character varying COLLATE pg_catalog."default",
-	rating integer,
-	photoid character varying COLLATE pg_catalog."default",
-	dishprice double precision,
-	vendorid integer,
-	creationtime timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
-	dishname character varying COLLATE pg_catalog."default",
-	dishtype character varying COLLATE pg_catalog."default",
-	validimage boolean NOT NULL DEFAULT 'true',
-	location geography(Point,4326),
+    id integer NOT NULL DEFAULT 'nextval('palateapp.dishreview_id_seq'::regclass)',
+    userid integer,
+    dishid integer,
+    cuisinetype character varying COLLATE pg_catalog."default",
+    rating integer,
+    photoid character varying COLLATE pg_catalog."default",
+    dishprice double precision,
+    vendorid integer,
+    creationtime timestamp with time zone DEFAULT 'CURRENT_TIMESTAMP',
+    dishname character varying COLLATE pg_catalog."default",
+    dishtype character varying COLLATE pg_catalog."default",
+    validimage boolean NOT NULL DEFAULT 'true',
+    location geography(Point,4326),
+    dishtypes character varying[] COLLATE pg_catalog."default",
+    diet character varying COLLATE pg_catalog."default",
+    dynamiclink character varying COLLATE pg_catalog."default",
     CONSTRAINT dishreview_pkey PRIMARY KEY (id),
     CONSTRAINT dishreview_ratingid_fkey FOREIGN KEY (rating)
         REFERENCES palateapp.dishrating (ratingid) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-        NOT VALID,	
+        NOT VALID,
     CONSTRAINT dishreview_userid_fkey FOREIGN KEY (userid)
         REFERENCES palateapp.userdetail (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
+        ON DELETE NO ACTION
+        NOT VALID,
     CONSTRAINT dishreview_vendorid_fkey FOREIGN KEY (vendorid)
         REFERENCES palateapp.vendor (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION			
-);
+        ON DELETE NO ACTION
+        NOT VALID
+)
 
 
 -- Table: palateapp.userbuddies
