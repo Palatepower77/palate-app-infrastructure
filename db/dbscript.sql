@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS palateapp.dish
 (
     id BIGSERIAL NOT NULL,
     dishname character varying COLLATE pg_catalog."default",
-    dishtype character varying COLLATE pg_catalog."default",
     cuisinetype character varying COLLATE pg_catalog."default",
     creationtime timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     userentry boolean NOT NULL DEFAULT 'false',
@@ -122,9 +121,11 @@ CREATE TABLE IF NOT EXISTS palateapp.dishreview
 	vendorid integer,
 	creationtime timestamp with time zone DEFAULT CURRENT_TIMESTAMP,
 	dishname character varying COLLATE pg_catalog."default",
-	dishtype character varying COLLATE pg_catalog."default",
+    diet character varying COLLATE pg_catalog."default",
+    dishtypes character varying[] COLLATE pg_catalog."default",	
 	validimage boolean NOT NULL DEFAULT 'true',
 	location geography(Point,4326),
+    dynamiclink character varying COLLATE pg_catalog."default",
     CONSTRAINT dishreview_pkey PRIMARY KEY (id),
     CONSTRAINT dishreview_ratingid_fkey FOREIGN KEY (rating)
         REFERENCES palateapp.dishrating (ratingid) MATCH SIMPLE
