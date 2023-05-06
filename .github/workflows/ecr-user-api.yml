@@ -38,7 +38,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1      
 
     - name: Get list of Image
-      run: aws ecr list-images --repository-name ${{ env.ECR_REPOSITORY }}
+      run: aws ecr describe-images --repository-name ${{ env.ECR_REPOSITORY }} --query 'sort_by(imagePushedAt)[*]
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
