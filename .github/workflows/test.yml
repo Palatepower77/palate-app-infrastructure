@@ -57,8 +57,9 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        SHA_ID: ${{ github.event.inputs.shaId }}
       run: |
-        if [ "${{ github.event.inputs.shaId }}" = "main" ]; then IMAGE_TAG="main"; else IMAGE_TAG="hotfix"; fi
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.event.inputs.shaId }} .
+        if [ "$SHA_ID" = "main" ]; then IMAGE_TAG="main"; else IMAGE_TAG="hotfix"; fi
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:$SHA_ID .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
