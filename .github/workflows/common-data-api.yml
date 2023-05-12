@@ -76,4 +76,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         if [ "${{ env.DEPLOY_ENV }}" = "prod" ]; then ECS_SERVICE="common-data-api-service"; ECS_CLUSTER="palate-app-prod-cluster"; else ECS_SERVICE="common-data-api-service-new"; ECS_CLUSTER="palate-app-dev-cluster"; fi
-        aws ecs update-service --service ${{ env.ECS_SERVICE }} --cluster ${{ env.ECS_CLUSTER }} --force-new-deployment
+        aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
