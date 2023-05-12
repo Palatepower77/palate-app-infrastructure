@@ -2,17 +2,17 @@ name: Deploy Common-Data-API
 
 on:
   workflow_dispatch:
+    inputs:
+      shaId:
+        description: 'Commit id to Deploy'     
+        required: true
+        default: 'main'
 
 env:
   REPO_NAME: Palatepower77/palate-app-common-data-api
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: palate-common-data-api           # set this to your Amazon ECR repository name
-  ECS_SERVICE: common-data-api-service-new                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: palate-app-dev-cluster                 # set this to your Amazon ECS cluster name
-  #ECS_TASK_DEFINITION: .aws/task-definition.json # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
-  #CONTAINER_NAME: palate-development-container           # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
+  SHA_ID: ${{ github.event.inputs.shaId }}
 
 jobs:
   build:
@@ -23,6 +23,7 @@ jobs:
     - name: Checkout private tools
       uses: actions/checkout@v3
       with:
+        ref: $SHA_ID
         repository: ${{ env.REPO_NAME }}
         token: ${{ secrets.GIT_TOKEN }}
 
@@ -54,14 +55,19 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: latest
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        if [ "$SHA_ID" = "main" ]; then IMAGE_TAG="main"; else IMAGE_TAG="hotfix"; fi
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:$SHA_ID .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
     - name: Update ECS for new Image
-      run: aws ecs update-service --service ${{ env.ECS_SERVICE }} --cluster ${{ env.ECS_CLUSTER }} --force-new-deployment
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: |
+        if [ "$SHA_ID" = "main" ];
+          then ECS_SERVICE="common-data-api-service-new";ECS_CLUSTER="palate-app-dev-cluster";
+          else ECS_SERVICE="common-data-api-service";ECS_CLUSTER="palate-app-prod-cluster";
+        fi
+        aws ecs update-service --service ${{ env.ECS_SERVICE }} --cluster ${{ env.ECS_CLUSTER }} --force-new-deployment
