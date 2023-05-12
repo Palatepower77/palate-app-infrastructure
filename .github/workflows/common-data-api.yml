@@ -32,7 +32,7 @@ jobs:
     - name: Checkout private tools
       uses: actions/checkout@v3
       with:
-        ref: refs/heads/$SHA_ID
+        ref: refs/heads/${{ SHA_ID }}
         repository: ${{ env.REPO_NAME }}
         token: ${{ secrets.GIT_TOKEN }}
 
