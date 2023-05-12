@@ -21,6 +21,7 @@ env:
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: palate-common-data-api           # set this to your Amazon ECR repository name
   SHA_ID: ${{ github.event.inputs.shaId }}
+  DEPLOY_ENV: ${{ github.event.inputs.deployEnvironment }}
 
 jobs:
   build:
@@ -74,8 +75,8 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
-        if [ "$SHA_ID" = "main" ];
-          then ECS_SERVICE="common-data-api-service-new";ECS_CLUSTER="palate-app-dev-cluster";
-          else ECS_SERVICE="common-data-api-service";ECS_CLUSTER="palate-app-prod-cluster";
+        if [ "$DEPLOY_ENV" = "prod" ];
+          then ECS_SERVICE="common-data-api-service";ECS_CLUSTER="palate-app-prod-cluster";
+          else ECS_SERVICE="common-data-api-service-new";ECS_CLUSTER="palate-app-dev-cluster";
         fi
         aws ecs update-service --service ${{ env.ECS_SERVICE }} --cluster ${{ env.ECS_CLUSTER }} --force-new-deployment
