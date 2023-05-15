@@ -25,14 +25,13 @@ on:
         options:
           - dev
           - prod
-run: |
-  if [ "${{ env.SHA_ID }}" = "main" ]; then GIT_REF_ID="refs/heads/${{ env.SHA_ID }}"; else GIT_REF_ID="${{ env.SHA_ID }}"; fi
 env:
   REPO_NAME: ${{ github.event.inputs.repoName }}
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: ${{ github.event.inputs.repoName }}
   SHA_ID: ${{ github.event.inputs.shaId }}
   DEPLOY_ENV: ${{ github.event.inputs.deployEnvironment }}
+  GIT_REF_ID: if [ "${{ env.SHA_ID }}" = "main" ]; then echo "refs/heads/${{ env.SHA_ID }}"; else echo "${{ env.SHA_ID }}"; fi
 
 jobs:
   build:
