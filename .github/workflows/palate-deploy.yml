@@ -41,8 +41,7 @@ jobs:
     steps:
     - name: Checkout private tools
       uses: actions/checkout@v3
-      run: |
-        if [ "${{ env.SHA_ID }}" = "main" ]; then GIT_REF_ID="refs/heads/${{ env.SHA_ID }}"; else GIT_REF_ID="${{ env.SHA_ID }}"; fi
+      run: if [ "${{ env.SHA_ID }}" = "main" ]; then GIT_REF_ID="refs/heads/${{ env.SHA_ID }}"; else GIT_REF_ID="${{ env.SHA_ID }}"; fi
       with:
         ref: $GIT_REF_ID
         repository: Palatepower77/${{ env.REPO_NAME }}
