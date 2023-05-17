@@ -33,5 +33,5 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             ref: 'refs/tags/hotfix',
-            sha: context.sha
+            sha: '36e6d43348682d57d77313043249bce59f13e667'
           })
