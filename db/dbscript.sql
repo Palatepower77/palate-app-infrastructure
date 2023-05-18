@@ -151,7 +151,8 @@ CREATE TABLE IF NOT EXISTS palateapp.dishreview
     CONSTRAINT dishreview_vendorid_fkey FOREIGN KEY (vendorid)
         REFERENCES palateapp.vendor (id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION			
+        ON DELETE NO ACTION,
+	CONSTRAINT unique_dish_vendor_user UNIQUE (userid, dishid, vendorid)
 );
 
 
