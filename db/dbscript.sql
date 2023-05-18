@@ -1,3 +1,15 @@
+-- Table: palateapp.usersession
+
+DROP TABLE IF EXISTS palateapp.usersession cascade;
+
+CREATE TABLE IF NOT EXISTS palateapp.usersession
+(
+    id BIGSERIAL NOT NULL,
+    phonenumber bigint,
+    usersession character varying COLLATE pg_catalog."default",
+    CONSTRAINT usersession_pkey PRIMARY KEY (id),
+	CONSTRAINT unique_phonenumber_combination UNIQUE (phonenumber)
+);
 
 -- Table: palateapp.dish
 
