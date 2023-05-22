@@ -114,6 +114,8 @@ CREATE TABLE IF NOT EXISTS palateapp.vendor
     postalcode character varying,
     phonenumber character varying,
 	creationtime timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    geocode geography(Point, 4326),
+    userentry boolean,
     CONSTRAINT vendor_pkey PRIMARY KEY (id)
 );
 
