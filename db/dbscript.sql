@@ -240,6 +240,6 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS palateapp.userreactions
     OWNER to boss;
 	
-GRANT ALL ON palateapp.reactions to palate_r_user;
+GRANT ALL ON palateapp.userreactions to palate_r_user;
 
-GRANT ALL ON palateapp.reactions to palate_rw_user;
+GRANT ALL ON palateapp.userreactions to palate_rw_user;
