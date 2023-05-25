@@ -232,7 +232,8 @@ CREATE TABLE palateapp.userreactions
         REFERENCES palateapp.reactions (reactionid) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-        NOT VALID
+        NOT VALID,
+	CONSTRAINT unique_review_user_reaction UNIQUE (reviewid, userid, reactionid)
 )
 
 TABLESPACE pg_default;
