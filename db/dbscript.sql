@@ -191,3 +191,55 @@ CREATE TABLE IF NOT EXISTS palateapp.usertoken
     CONSTRAINT useusertoken_pkey PRIMARY KEY (id)
 );
 
+
+
+
+CREATE TABLE palateapp.reactions
+(
+    reactionid BIGSERIAL NOT NULL,
+    reaction character varying NOT NULL,
+    PRIMARY KEY (reactionid)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.reactions
+    OWNER to boss;
+	
+GRANT ALL ON palateapp.reactions to palate_r_user;
+
+GRANT ALL ON palateapp.reactions to palate_rw_user;
+
+
+CREATE TABLE palateapp.userreactions
+(
+    id BIGSERIAL NOT NULL,
+	 reviewid integer,
+	userid integer,
+	reactionid integer,
+    PRIMARY KEY (id),
+	CONSTRAINT fk_reviewid FOREIGN KEY (reviewid)
+        REFERENCES palateapp.dishreview (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+	CONSTRAINT fk_userid FOREIGN KEY (userid)
+        REFERENCES palateapp.userdetail (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+	CONSTRAINT fk_reactionid FOREIGN KEY (reactionid)
+        REFERENCES palateapp.reactions (reactionid) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.userreactions
+    OWNER to boss;
+	
+GRANT ALL ON palateapp.reactions to palate_r_user;
+
+GRANT ALL ON palateapp.reactions to palate_rw_user;
