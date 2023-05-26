@@ -264,3 +264,9 @@ ALTER TABLE IF EXISTS palateapp.dishreview
     ON DELETE NO ACTION;
 CREATE INDEX IF NOT EXISTS fki_cuisinetype_fkey
     ON palateapp.dishreview(cuisinetype);
+    
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ALTER COLUMN validimage DROP DEFAULT;
+
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ALTER COLUMN validimage DROP NOT NULL;
