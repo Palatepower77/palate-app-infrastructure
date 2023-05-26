@@ -244,3 +244,23 @@ ALTER TABLE IF EXISTS palateapp.userreactions
 GRANT ALL ON palateapp.userreactions to palate_r_user;
 
 GRANT ALL ON palateapp.userreactions to palate_rw_user;
+
+-- Alter table queries --
+ALTER TABLE IF EXISTS palateapp.cuisine
+    ADD CONSTRAINT unique_cuisine_type UNIQUE (cuisinetype);
+
+ALTER TABLE IF EXISTS palateapp.dish
+    ADD CONSTRAINT cuisinetype_fkey FOREIGN KEY (cuisinetype)
+    REFERENCES palateapp.cuisine (cuisinetype) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+CREATE INDEX IF NOT EXISTS fki_cuisinetype_fkey
+    ON palateapp.dish(cuisinetype);
+
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ADD CONSTRAINT cuisinetype_fkey FOREIGN KEY (cuisinetype)
+    REFERENCES palateapp.cuisine (cuisinetype) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+CREATE INDEX IF NOT EXISTS fki_cuisinetype_fkey
+    ON palateapp.dishreview(cuisinetype);
