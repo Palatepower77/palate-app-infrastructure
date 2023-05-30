@@ -68,7 +68,10 @@ CREATE TABLE IF NOT EXISTS palateapp.userdetail
     updatetime timestamp without time zone,
     creationtime timestamp WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	bio character varying COLLATE pg_catalog."default",
-    CONSTRAINT userdetail_pkey PRIMARY KEY (id)
+    CONSTRAINT userdetail_pkey PRIMARY KEY (id),
+    CONSTRAINT unique_phonenumber UNIQUE (phonenumber),
+    CONSTRAINT unique_handle UNIQUE (handle),
+    CONSTRAINT unique_email UNIQUE (email)
 );
 
 -- Table: palateapp.userselectedpreference
