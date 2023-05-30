@@ -274,3 +274,21 @@ ALTER TABLE IF EXISTS palateapp.dishreview
 
 ALTER TABLE IF EXISTS palateapp.dishreview
     ALTER COLUMN validimage DROP NOT NULL;
+
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD CONSTRAINT unique_phonenumber UNIQUE (phonenumber);
+
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD CONSTRAINT unique_handle UNIQUE (handle);
+
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD CONSTRAINT unique_email UNIQUE (email);
+
+ALTER TABLE IF EXISTS palateapp.dish
+  ADD CONSTRAINT unique_dishname UNIQUE (dishname);
+  
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ADD CONSTRAINT dishreview_dishid_fkey FOREIGN KEY (dishid)
+    REFERENCES palateapp.dish (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
