@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS palateapp.dish
     dishtypes character varying[] COLLATE pg_catalog."default",	
     diet character varying COLLATE pg_catalog."default",	
     CONSTRAINT dish_pkey PRIMARY KEY (id),
-    CONSTRAINT unique_dishname_cuisinetype_diet_combination UNIQUE (dishname, cuisinetype, diet)
+    CONSTRAINT unique_dishname_cuisinetype_diet_combination UNIQUE (dishname, cuisinetype, diet),
+    CONSTRAINT unique_dishname UNIQUE (dishname)
 );
 
 -- Table: palateapp.dishrating
