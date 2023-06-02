@@ -288,6 +288,18 @@ ALTER TABLE IF EXISTS palateapp.dishreview
     REFERENCES palateapp.dish (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
+
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ADD COLUMN vendortype character varying;
+
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ADD CONSTRAINT dishreview_vendortype_fkey FOREIGN KEY (vendortype)
+    REFERENCES palateapp.vendortypes (vendortype) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+ALTER TABLE IF EXISTS palateapp.dishreview
+    ADD COLUMN currencycode character(3);
     
 -- Table: palateapp.countrydetails
 
@@ -314,3 +326,23 @@ GRANT ALL ON TABLE palateapp.countrydetails TO palate_r_user;
 GRANT ALL ON TABLE palateapp.countrydetails TO palate_rw_user;
 
 GRANT ALL ON TABLE palateapp.countrydetails TO palateuser;    
+
+
+-- Table: palateapp.vendortypes
+
+CREATE TABLE palateapp.vendortypes
+(
+    id BIGSERIAL NOT NULL,
+    vendortype character varying NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT vendortype_unique UNIQUE (vendortype)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.vendortypes
+    OWNER to boss;
+
+GRANT ALL ON palateapp.vendortypes to palate_r_user;
+
+GRANT ALL ON palateapp.vendortypes to palate_rw_user;
