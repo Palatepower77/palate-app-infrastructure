@@ -288,3 +288,28 @@ ALTER TABLE IF EXISTS palateapp.dishreview
     REFERENCES palateapp.dish (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION;
+    
+-- Table: palateapp.countrydetails
+
+DROP TABLE IF EXISTS palateapp.countrydetails;
+
+CREATE TABLE IF NOT EXISTS palateapp.countrydetails
+(
+    id bigint NOT NULL DEFAULT 'nextval('palateapp.countrydetails_id_seq'::regclass)',
+    name character varying COLLATE pg_catalog."default",
+    isocode integer,
+    currencycode character(2) COLLATE pg_catalog."default",
+    currency character varying COLLATE pg_catalog."default",
+    CONSTRAINT countrydetails_pkey PRIMARY KEY (id),
+    CONSTRAINT countrydetails_unique UNIQUE (name, isocode, currencycode, currency)
+)
+
+ALTER TABLE IF EXISTS palateapp.countrydetails OWNER to boss;
+
+GRANT ALL ON TABLE palateapp.countrydetails TO boss;
+
+GRANT ALL ON TABLE palateapp.countrydetails TO palate_r_user;
+
+GRANT ALL ON TABLE palateapp.countrydetails TO palate_rw_user;
+
+GRANT ALL ON TABLE palateapp.countrydetails TO palateuser;    
