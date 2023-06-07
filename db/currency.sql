@@ -54,3 +54,4 @@ INSERT INTO palateapp.countrydetails values (53 ,'FAROE ISLANDS' ,298 ,'DKK' ,'K
 INSERT INTO palateapp.countrydetails values (54 ,'GEORGIA' ,995 ,'GEL' ,'LARI ', 'GEO' ,'');
 INSERT INTO palateapp.countrydetails values (55 ,'KOSOVO' ,381 ,'EUR' ,'EURO', 'XKX' ,'U+20AC');
 INSERT INTO palateapp.countrydetails values (56 ,'CYPRUS' ,357 ,'EUR' ,'EURO', 'CYP' ,'U+20AC');
+UPDATE palateapp.countrydetails SET countrycode='XXK' WHERE id=55;
