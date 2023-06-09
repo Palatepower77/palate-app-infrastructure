@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS palateapp.userdetail cascade;
 CREATE TABLE IF NOT EXISTS palateapp.userdetail
 (
     id BIGSERIAL NOT NULL,
-    handle character varying COLLATE pg_catalog."default",
+    handle VARCHAR(20) COLLATE pg_catalog."default",
     firstname character varying COLLATE pg_catalog."default",
     lastname character varying COLLATE pg_catalog."default",
     gender character varying COLLATE pg_catalog."default",
@@ -300,6 +300,12 @@ ALTER TABLE IF EXISTS palateapp.dishreview
 
 ALTER TABLE IF EXISTS palateapp.dishreview
     ADD COLUMN currencycode character(3);
+
+--    Alterquerry to set Handle length 20
+
+    ALTER TABLE palateapp.userdetail
+    ALTER COLUMN handle TYPE VARCHAR(20);
+
     
 -- Table: palateapp.countrydetails
 
