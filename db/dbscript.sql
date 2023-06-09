@@ -301,6 +301,9 @@ ALTER TABLE IF EXISTS palateapp.dishreview
 ALTER TABLE IF EXISTS palateapp.dishreview
     ADD COLUMN currencycode character(3);
     
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD COLUMN active boolean NOT NULL DEFAULT true;
+
 -- Table: palateapp.countrydetails
 
 DROP TABLE IF EXISTS palateapp.countrydetails;
