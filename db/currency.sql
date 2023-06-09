@@ -52,6 +52,5 @@ INSERT INTO palateapp.countrydetails values (51 ,'TURKEY' ,90 ,'TRY' ,'LIRA ', 
 INSERT INTO palateapp.countrydetails values (52 ,'ARMENIA' ,374 ,'AMD' ,'DRAM ', 'ARM' ,'');
 INSERT INTO palateapp.countrydetails values (53 ,'FAROE ISLANDS' ,298 ,'DKK' ,'KRONE ', 'FRO' ,'');
 INSERT INTO palateapp.countrydetails values (54 ,'GEORGIA' ,995 ,'GEL' ,'LARI ', 'GEO' ,'');
-INSERT INTO palateapp.countrydetails values (55 ,'KOSOVO' ,381 ,'EUR' ,'EURO', 'XKX' ,'U+20AC');
+INSERT INTO palateapp.countrydetails values (55 ,'KOSOVO' ,381 ,'EUR' ,'EURO', 'XXK' ,'U+20AC');
 INSERT INTO palateapp.countrydetails values (56 ,'CYPRUS' ,357 ,'EUR' ,'EURO', 'CYP' ,'U+20AC');
-UPDATE palateapp.countrydetails SET countrycode='XXK' WHERE id=55;
