@@ -324,9 +324,10 @@ CREATE TABLE IF NOT EXISTS palateapp.countrydetails
     isocode integer,
     currencycode character(3) COLLATE pg_catalog."default",
     currency character varying COLLATE pg_catalog."default",
-	countryCode character varying COLLATE pg_catalog."default",
+    countrycode character(2) COLLATE pg_catalog."default",
     CONSTRAINT countrydetails_pkey PRIMARY KEY (id),
-    CONSTRAINT countrydetails_unique UNIQUE (name, isocode, currencycode, currency)
+    CONSTRAINT countrydetails_unique UNIQUE (name, isocode, currencycode, currency, countycode),
+    CONSTRAINT unique_countrycode UNIQUE (countrycode)
 )
 
 ALTER TABLE IF EXISTS palateapp.countrydetails OWNER to boss;
