@@ -301,12 +301,25 @@ ALTER TABLE IF EXISTS palateapp.dishreview
 ALTER TABLE IF EXISTS palateapp.dishreview
     ADD COLUMN currencycode character(3);
 
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ALTER COLUMN handle SET NOT NULL;
+
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ALTER COLUMN phonenumber SET NOT NULL;
+
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD COLUMN countrycode character(2) NOT NULL DEFAULT 'IN';
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD CONSTRAINT fkey_countrycode FOREIGN KEY (countrycode)
+    REFERENCES palateapp.countrydetails (countrycode) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
 --    Alterquerry to set Handle length 20
 
-    ALTER TABLE palateapp.userdetail
+ALTER TABLE palateapp.userdetail
     ALTER COLUMN handle TYPE VARCHAR(20);
 
-    
 ALTER TABLE palateapp.userdetail
     ALTER COLUMN handle TYPE VARCHAR(20);
     
