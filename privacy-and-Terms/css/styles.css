@@ -1,0 +1,32 @@
+body {
+    margin: 0px;
+    scroll-behavior: smooth;
+}
+
+.main {
+    margin: 3.90625vw;
+    text-align: justify;
+    font: normal normal 400 1.5vw Segoe UI;
+    letter-spacing: 0.2px;
+    color: #212121;
+    opacity: 1;
+}
+
+.dataAlign {
+    display: grid;
+    grid-template-columns: 3% 97%;
+}
+
+.content-sub-heading {
+    font: normal normal 500 1.5vw Segoe UI;
+}
+
+@media screen and (max-width: 991px) {
+    .main {
+        font: normal normal 400 2vw Segoe UI;
+    }
+
+    .content-sub-heading {
+        font: normal normal 500 2vw Segoe UI;
+    }
+}
