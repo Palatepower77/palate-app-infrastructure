@@ -19,7 +19,7 @@ on:
 env:
   REPO_NAME: Palatepower77/palate-app-user-api
   AWS_REGION: ap-south-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: palate-app-common-data-api           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: palate-common-data-api           # set this to your Amazon ECR repository name
   SHA_ID: ${{ github.event.inputs.shaId }}
   DEPLOY_ENV: ${{ github.event.inputs.deployEnvironment }}
 
