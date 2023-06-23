@@ -389,4 +389,3 @@ ALTER TABLE IF EXISTS palateapp.vendortypes
 GRANT ALL ON palateapp.vendortypes to palate_r_user;
 
 GRANT ALL ON palateapp.vendortypes to palate_rw_user;
-Boolean searchFromElastic = This will come from Database;
