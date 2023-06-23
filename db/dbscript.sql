@@ -383,9 +383,9 @@ CREATE TABLE palateapp.featuretoggles
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS palateapp.vendortypes
+ALTER TABLE IF EXISTS palateapp.featuretoggles
     OWNER to boss;
 
-GRANT ALL ON palateapp.vendortypes to palate_r_user;
+GRANT ALL ON palateapp.featuretoggles to palate_r_user;
 
-GRANT ALL ON palateapp.vendortypes to palate_rw_user;
+GRANT ALL ON palateapp.featuretoggles to palate_rw_user;
