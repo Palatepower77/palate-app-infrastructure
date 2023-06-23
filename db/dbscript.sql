@@ -372,3 +372,21 @@ ALTER TABLE IF EXISTS palateapp.vendortypes
 GRANT ALL ON palateapp.vendortypes to palate_r_user;
 
 GRANT ALL ON palateapp.vendortypes to palate_rw_user;
+
+-- Table: palateapp.featuretoggles
+CREATE TABLE palateapp.featuretoggles
+(
+    feature character varying NOT NULL,
+    value boolean NOT NULL,
+    PRIMARY KEY (feature)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.vendortypes
+    OWNER to boss;
+
+GRANT ALL ON palateapp.vendortypes to palate_r_user;
+
+GRANT ALL ON palateapp.vendortypes to palate_rw_user;
+Boolean searchFromElastic = This will come from Database;
