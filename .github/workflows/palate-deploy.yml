@@ -121,7 +121,7 @@ jobs:
         aws ecs wait services-stable --services $ECS_SERVICE --cluster $ECS_CLUSTER
 
     - name: JMeter Test Execution
-      if: ${{ env.DEPLOY_ENV = 'dev'}}
+      if: ${{ env.DEPLOY_ENV != 'prod'}}
       run: |
         echo 'Download JMeter'
 
@@ -138,19 +138,19 @@ jobs:
         sed -e 's/<[^>]*>//g' result.jtl > result.csv
 
     - name: Upload JTL Result
-      if: ${{ env.DEPLOY_ENV = 'dev'}}
+      if: ${{ env.DEPLOY_ENV != 'prod'}}
       uses: actions/upload-artifact@v2
       with:
         name: jmeter-jtl-result
         path: result.jtl
     - name: Upload CSV Result
-      if: ${{ env.DEPLOY_ENV = 'dev'}}
+      if: ${{ env.DEPLOY_ENV != 'prod'}}
       uses: actions/upload-artifact@v2
       with:
         name: jmeter-csv-result
         path: result.csv
     - name: Check Result Errors
-      if: ${{ env.DEPLOY_ENV = 'dev'}}
+      if: ${{ env.DEPLOY_ENV != 'prod'}}
       run: |
         jmeter_output=$(cat jmeter_output.log)
         summary=$(echo "$jmeter_output" | grep -o "summary +.*")
