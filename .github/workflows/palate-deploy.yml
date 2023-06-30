@@ -24,7 +24,6 @@ on:
         default: 'dev'
         options:
           - dev
-          - prod
 
 env:
   REPO_NAME: ${{ github.event.inputs.repoName }}
