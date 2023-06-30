@@ -131,10 +131,6 @@ jobs:
           echo 'Convert JTL to CSV'
           sed -e 's/<[^>]*>//g' result.jtl > result.csv
           
-          echo 'Upload Result Files as Artifacts'
-          mv result.csv result_with_errors.csv
-          sed -i '1s/^/errors\n/' result_with_errors.csv
-          mv result_with_errors.csv result.csv
     - name: Upload Result Files as Artifacts
       uses: actions/upload-artifact@v2
       with:
