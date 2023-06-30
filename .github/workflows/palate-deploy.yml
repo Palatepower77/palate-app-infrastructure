@@ -122,9 +122,7 @@ jobs:
       run: |
         wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
         tar -xzf jmeter.tgz
-    - name: List files in current directory
-      run: |
-        ls -al
+        
     - name: Run JMeter Test
       run: |
         ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx
