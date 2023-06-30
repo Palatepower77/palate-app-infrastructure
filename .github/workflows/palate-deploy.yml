@@ -118,7 +118,6 @@ jobs:
         fi
 
         aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
-        aws ecs wait services-stable --services $ECS_SERVICE --cluster $ECS_CLUSTER
 
     - name: JMeter Test Execution
       if: ${{ env.DEPLOY_ENV != 'prod'}}
