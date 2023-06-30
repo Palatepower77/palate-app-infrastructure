@@ -118,23 +118,40 @@ jobs:
 
         aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
 
-    - name: JMeter Test Execution
+    - name: Download JMeter
       run: |
-          echo 'Download JMeter'
           wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
           tar -xzf jmeter.tgz
-    
-          echo 'Run JMeter Test'
-          ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx -l result.jtl > jmeter_output.log
+    - name: Run JMeter Test
+      run: |
+          ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App_Error.jmx -l result.jtl > jmeter_output.log
           echo "$(cat jmeter_output.log)"
-    
-          echo 'Convert JTL to CSV'
+    - name: Read Result
+      run: |
+          echo "$(cat jmeter_output.log)"
+    - name: Convert JTL to CSV
+      run: |
           sed -e 's/<[^>]*>//g' result.jtl > result.csv
-          
-    - name: Upload Result Files as Artifacts
+    - name: Upload JTL Result
       uses: actions/upload-artifact@v2
       with:
-        name: JMeter Result
-        path: |
-          result.csv
-          result.jtl
+          name: jmeter-jtl-result
+          path: result.jtl
+    - name: Upload CSV Result
+      uses: actions/upload-artifact@v2
+      with:
+        name: jmeter-csv-result
+        path: result.csv
+    - name: Check Result Errors
+      run: |
+          jmeter_output=$(cat jmeter_output.log)
+          summary=$(echo "$jmeter_output" | grep -o "summary +.*")
+          while read -r line; do
+            error_count=$(echo "$line" | grep -o "Err: *[0-9]*" | awk -F' ' '{print $NF}')
+            if [ "$error_count" -gt 0 ]; then
+              echo "There were errors in the JMeter result"
+              exit 1
+            fi
+          done <<< "$summary"
+          echo "No errors found in the JMeter result"
+
