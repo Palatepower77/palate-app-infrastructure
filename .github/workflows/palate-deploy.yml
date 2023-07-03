@@ -120,10 +120,10 @@ jobs:
 
     - name: Download JMeter
       run: |
+        cd ..
         wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
         tar -xzf jmeter.tgz
         
     - name: Run JMeter Test
       run: |
-        cd ..
         ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx
