@@ -117,33 +117,35 @@ jobs:
         fi
 
         aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
+        
     - name: Checkout main branch
       uses: actions/checkout@v3
       with:
         ref: refs/heads/main
         repository: Palatepower77/palate-app-infrastructure
         token: ${{ secrets.GIT_TOKEN }}
-    - name: Download JMeter
+    
+    - name: JMeter Test Execution
       run: |
-        wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
-        tar -xzf jmeter.tgz
-    - name: Run JMeter Test
-      run: |
-        ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx -l result.jtl > jmeter_output.log
-        echo "$(cat jmeter_output.log)"
-    - name: Convert JTL to CSV
-      run: |
+          echo 'Download JMeter'
+          wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf jmeter.tgz
+    
+          echo 'Run JMeter Test'
+          ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx -l result.jtl > jmeter_output.log
+          echo "$(cat jmeter_output.log)"
+    
+          echo 'Convert JTL to CSV'
           sed -e 's/<[^>]*>//g' result.jtl > result.csv
-    - name: Upload JTL Result
+          
+    - name: Upload Result Files as Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: jmeter-jtl-result
-        path: result.jtl
-    - name: Upload CSV Result
-      uses: actions/upload-artifact@v2
-      with:
-        name: jmeter-csv-result
-        path: result.csv
+          name: JMeter Result
+          path: |
+            result.csv
+            result.jtl
+            
     - name: Check Result Errors
       run: |
           jmeter_output=$(cat jmeter_output.log)
