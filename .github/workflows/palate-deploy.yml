@@ -117,6 +117,7 @@ jobs:
         fi
 
         aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
+        aws ecs wait services-stable --services $ECS_SERVICE --cluster $ECS_CLUSTER
         
     - name: Checkout main branch
       uses: actions/checkout@v3
