@@ -125,4 +125,4 @@ jobs:
         
     - name: Run JMeter Test
       run: |
-        ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t Palate_App.jmx
+        ./apache-jmeter-5.5/bin/jmeter -JTOKEN=${{ secrets.TOKEN }} -n -t ../Palate_App.jmx
