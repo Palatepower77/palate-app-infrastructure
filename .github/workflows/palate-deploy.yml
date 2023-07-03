@@ -117,10 +117,14 @@ jobs:
         fi
 
         aws ecs update-service --service $ECS_SERVICE --cluster $ECS_CLUSTER --force-new-deployment
-
+    - name: Checkout main branch
+      uses: actions/checkout@v3
+      with:
+        ref: refs/heads/main
+        repository: Palatepower77/palate-app-infrastructure
+        token: ${{ secrets.GIT_TOKEN }}
     - name: Download JMeter
       run: |
-        cd ..
         wget -O jmeter.tgz https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
         tar -xzf jmeter.tgz
         
