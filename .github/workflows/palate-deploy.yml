@@ -121,6 +121,7 @@ jobs:
         aws ecs wait services-stable --services $ECS_SERVICE --cluster $ECS_CLUSTER
         
     - name: Checkout main branch
+      if: ${{ env.DEPLOY_ENV == 'dev'}}
       uses: actions/checkout@v3
       with:
         ref: refs/heads/main
@@ -128,9 +129,11 @@ jobs:
         token: ${{ secrets.GIT_TOKEN }}
     
     - name: JMeter Test Execution
-      run: run: TOKEN="${{ secrets.TOKEN }}" bash ./.github/workflows/jmeter_script.sh run_jmeter
+      if: ${{ env.DEPLOY_ENV == 'dev'}}
+      run: TOKEN="${{ secrets.TOKEN }}" bash ./.github/workflows/jmeter_script.sh run_jmeter
           
     - name: Upload Result Files as Artifacts
+      if: ${{ env.DEPLOY_ENV == 'dev'}}
       uses: actions/upload-artifact@v2
       with:
           name: JMeter Result
@@ -139,4 +142,5 @@ jobs:
             result.jtl
             
     - name: Check Result Errors
+      if: ${{ env.DEPLOY_ENV == 'dev'}}
       run: TOKEN="${{ secrets.TOKEN }}" bash ./.github/workflows/jmeter_script.sh check_result_errors
