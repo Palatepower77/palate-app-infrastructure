@@ -1,32 +1,112 @@
 body {
-    margin: 0px;
-    scroll-behavior: smooth;
+  margin: 0px;
+  scroll-behavior: smooth;
 }
 
 .main {
-    margin: 3.90625vw;
-    text-align: justify;
-    font: normal normal 400 1.5vw Segoe UI;
-    letter-spacing: 0.2px;
-    color: #212121;
-    opacity: 1;
+  margin: 3.90625vw;
+  text-align: justify;
+  font: normal normal 400 1.5vw Segoe UI;
+  letter-spacing: 0.2px;
+  color: #212121;
+  opacity: 1;
 }
 
 .dataAlign {
-    display: grid;
-    grid-template-columns: 3% 97%;
+  display: grid;
+  grid-template-columns: 3% 97%;
 }
 
 .content-sub-heading {
-    font: normal normal 500 1.5vw Segoe UI;
+  font: normal normal 500 1.5vw Segoe UI;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.logo {
+  width: 20vw;
+  margin-top: -1.56vw;
+  margin-bottom: -1.56vw;
+}
+
+.content {
+  margin: 3.90625vw;
+  text-align: justify;
+  font: normal normal 400 1.5vw Segoe UI;
+  letter-spacing: 0.2px;
+  color: #212121;
+  opacity: 1;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+}
+
+.ios-button,
+.android-button {
+  width: 27vw;
+  font: normal normal 500 1.5vw Segoe UI;
+  padding: 1.2vw;
+  background-color: #577ff6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 50px;
+}
+
+.fa-brands {
+  font-size: 1.7vw;
+}
+
+.ios-button:hover,
+.android-button:hover {
+  background-color: #fff;
+  color: #577ff6;
+  border: 1px solid #577ff6;
 }
 
 @media screen and (max-width: 991px) {
-    .main {
-        font: normal normal 400 2vw Segoe UI;
-    }
 
-    .content-sub-heading {
-        font: normal normal 500 2vw Segoe UI;
-    }
+  .main {
+    font: normal normal 400 2vw Segoe UI;
+  }
+
+  .content-sub-heading {
+    font: normal normal 500 2vw Segoe UI;
+  }
+
+}
+
+@media screen and (max-width: 680px) {
+
+  .logo {
+    width: 30vw;
+  }
+
+  .content {
+    font: normal normal 400 2vw Segoe UI;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+  }
+
+  .ios-button,
+  .android-button {
+    width: 36vw;
+    font: normal normal 500 2vw Segoe UI;
+  }
+
+  .fa-brands {
+    font-size: 2.3vw;
+  }
 }
