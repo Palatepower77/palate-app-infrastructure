@@ -87,26 +87,25 @@ body {
 @media screen and (max-width: 680px) {
 
   .logo {
-    width: 30vw;
+    width: 40vw;
   }
 
   .content {
-    font: normal normal 400 2vw Segoe UI;
-  }
-
-  .button-container {
-    text-align: center;
-    margin-top: 5vw;
-    margin-bottom: 5vw;
+    font: normal normal 400 4vw Segoe UI;
   }
 
   .ios-button,
   .android-button {
-    width: 36vw;
-    font: normal normal 500 2vw Segoe UI;
+    width: 70vw;
+    font: normal normal 500 4vw Segoe UI;
+  }
+
+  .android-button {
+    margin-top: 2vw;
   }
 
   .fa-brands {
-    font-size: 2.3vw;
+    font-size: 4.2vw;
   }
+
 }
