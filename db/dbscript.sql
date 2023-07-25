@@ -372,3 +372,7 @@ ALTER TABLE IF EXISTS palateapp.vendortypes
 GRANT ALL ON palateapp.vendortypes to palate_r_user;
 
 GRANT ALL ON palateapp.vendortypes to palate_rw_user;
+
+-- Table: palateapp.userdetails add otpoptin column --
+ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD COLUMN otpoptin boolean NOT NULL DEFAULT true; 
