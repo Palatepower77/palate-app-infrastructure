@@ -389,3 +389,7 @@ ALTER TABLE IF EXISTS palateapp.featuretoggles
 GRANT ALL ON palateapp.featuretoggles to palate_r_user;
 
 GRANT ALL ON palateapp.featuretoggles to palate_rw_user;
+
+-- Table palateapp.userdetails add otpoptin column query --
+ ALTER TABLE IF EXISTS palateapp.userdetail
+    ADD COLUMN otpoptin boolean NOT NULL DEFAULT true; 
