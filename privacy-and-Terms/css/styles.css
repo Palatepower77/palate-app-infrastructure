@@ -42,6 +42,10 @@ body {
   opacity: 1;
 }
 
+.privacy-align {
+  text-align: center;
+}
+
 @media screen and (max-width: 991px) {
 
   .main {
@@ -62,6 +66,12 @@ body {
 
   .content {
     font: normal normal 400 4vw Segoe UI;
+  }
+
+  .termsOfUse::before {
+    margin-left: 0px;
+    content: "\a";
+    white-space: pre;
   }
 
 }
