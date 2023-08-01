@@ -393,3 +393,31 @@ GRANT ALL ON palateapp.featuretoggles to palate_rw_user;
 -- Table palateapp.userdetails add otpoptin column query --
  ALTER TABLE IF EXISTS palateapp.userdetail
     ADD COLUMN otpoptin boolean NOT NULL DEFAULT true; 
+
+
+
+
+CREATE INDEX user_active_index
+    ON palateapp.userdetail USING btree
+    (active ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+CREATE INDEX user_id_index
+    ON palateapp.DISHREVIEW USING btree
+    (USERID ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+CREATE INDEX valid_image_index
+    ON palateapp.DISHREVIEW USING btree
+    (VALIDIMAGE ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+CREATE INDEX user_id_index_user_preference
+    ON palateapp.userselectedpreference USING btree
+    (userid ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+
