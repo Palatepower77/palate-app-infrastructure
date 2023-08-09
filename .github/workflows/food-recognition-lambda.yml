@@ -1,0 +1,79 @@
+name: Deploy Food Recognition Lambda
+
+on:
+  workflow_dispatch:
+    inputs:
+      repoName:
+        description: 'Repository to Deploy'     
+        required: true
+        type: choice
+        default: 'food-recognition'
+        options:
+          - food-recognition
+      shaId:
+        description: 'Commit id to Deploy'     
+        required: true
+        default: 'main'
+      deployEnvironment:
+        description: 'Environment to Deploy'     
+        required: true
+        type: choice
+        default: 'dev'
+        options:
+          - dev
+          - prod
+
+env:
+  REPO_NAME: ${{ github.event.inputs.repoName }}
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: food-recognition
+  SHA_ID: ${{ github.event.inputs.shaId }}
+  DEPLOY_ENV: ${{ github.event.inputs.deployEnvironment }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout main branch
+      if: ${{ env.SHA_ID == 'main'}}
+      uses: actions/checkout@v3
+      with:
+        ref: refs/heads/${{ env.SHA_ID }}
+        repository: Palatepower77/${{ env.REPO_NAME }}
+        token: ${{ secrets.GIT_TOKEN }}
+    - name: Checkout Commit id
+      if: ${{ env.SHA_ID != 'main'}}
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ env.SHA_ID }}
+        repository: Palatepower77/${{ env.REPO_NAME }}
+        token: ${{ secrets.GIT_TOKEN }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1      
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      run: |
+        if [ "${{ env.DEPLOY_ENV }}" = "dev" ]; then IMAGE_TAG="latest"; else IMAGE_TAG="hotfix"; fi
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+    - name: Update Lambda Function
+      id: update-lambda
+      env:
+        IMAGE_URI: ${{steps.build-image.outputs.image}}
+      run: |
+        aws lambda update-function-code --function-name arn:aws:lambda:ap-south-1:691652236122:function:food-recognition-dev --image-uri $IMAGE_URI
