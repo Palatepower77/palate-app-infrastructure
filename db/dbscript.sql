@@ -420,4 +420,22 @@ CREATE INDEX user_id_index_user_preference
     TABLESPACE pg_default;
 
 
+-- Table palateapp.vendor drop unnecessary column and add mapsplaceid column --
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS location;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS addressline1;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS addressline2;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS city;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS state;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS country;
+
+ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS postalcode;
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD COLUMN mapsplaceid character varying;
 
