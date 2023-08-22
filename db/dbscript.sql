@@ -439,3 +439,19 @@ ALTER TABLE IF EXISTS palateapp.vendor DROP COLUMN IF EXISTS postalcode;
 ALTER TABLE IF EXISTS palateapp.vendor
     ADD COLUMN mapsplaceid character varying;
 
+
+-- Table palateapp.vendor add postelcode and countrycode columns --
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD COLUMN postalcode character varying;
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD COLUMN countrycode character varying;
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD CONSTRAINT countrycode_fkey FOREIGN KEY (countrycode)
+    REFERENCES palateapp.countrydetails (countrycode) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+    
