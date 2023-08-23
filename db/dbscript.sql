@@ -454,4 +454,27 @@ ALTER TABLE IF EXISTS palateapp.vendor
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
-    
+
+
+-- Table: palateapp.appusagedetails
+
+-- DROP TABLE IF EXISTS palateapp.appusagedetails;
+
+CREATE TABLE IF NOT EXISTS palateapp.appusagedetails
+(
+    userid bigint NOT NULL,
+    defaultsearchlastvisited timestamp with time zone NOT NULL,
+    CONSTRAINT appusagedetails_pkey PRIMARY KEY (userid),
+    CONSTRAINT user_id_fkey FOREIGN KEY (userid)
+        REFERENCES palateapp.userdetail (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.appusagedetails
+    OWNER to boss;
+GRANT ALL ON TABLE palateapp.appusagedetails TO boss;
+GRANT ALL ON TABLE palateapp.appusagedetails TO palate_r_user;
+GRANT ALL ON TABLE palateapp.appusagedetails TO palate_rw_user;
