@@ -463,7 +463,8 @@ ALTER TABLE IF EXISTS palateapp.vendor
 CREATE TABLE IF NOT EXISTS palateapp.appusagedetails
 (
     userid bigint NOT NULL,
-    defaultsearchlastvisited timestamp with time zone NOT NULL,
+    defaultsearchlastvisited timestamp with time zone,
+    defaultsearchcurrentusage timestamp with time zone,
     CONSTRAINT appusagedetails_pkey PRIMARY KEY (userid),
     CONSTRAINT user_id_fkey FOREIGN KEY (userid)
         REFERENCES palateapp.userdetail (id) MATCH SIMPLE
