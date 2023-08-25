@@ -3613,7 +3613,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3652,7 +3652,9 @@ if (reviewid != null) {
           cuisineType { key value }, 
           vendorTypes { key value }, 
           ratings { key value }, 
-          dishNames { key value }
+          dishNames { key value },
+          allCuisineType{ key value },
+        	allVendorTypes{ key value }
           assetsBaseUrl
         } 
 }</stringProp>
@@ -3668,7 +3670,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;91\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;91\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3707,7 +3709,9 @@ if (reviewid != null) {
           cuisineType { key value }, 
           vendorTypes { key value }, 
           ratings { key value }, 
-          dishNames { key value }
+          dishNames { key value },
+          allCuisineType{ key value },
+        	allVendorTypes{ key value }
           assetsBaseUrl
         } 
 }</stringProp>
@@ -4925,7 +4929,7 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
             <stringProp name="Argument.name">token</stringProp>
             <stringProp name="Argument.value">${__P(TOKEN)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
-            <stringProp name="Argument.desc">Enter your token</stringProp>
+            <stringProp name="Argument.desc">Enter your token instead of  ${__P(TOKEN)}</stringProp>
           </elementProp>
           <elementProp name="phoneNumber" elementType="Argument">
             <stringProp name="Argument.name">phoneNumber</stringProp>
