@@ -16,7 +16,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">0</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -893,7 +893,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">0</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -3058,7 +3058,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;paneer\&quot;\n    \tinputSearchType: DISH #value should be VENDOR, DISH, PROFILE\n    \tdiet: [VEG,VEGAN]\n    \tdishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n    \tdishRating: [\&quot;MUST EAT\&quot;]\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n    \tpriceRange: {min: 10 , max: 300,currency:\&quot;INR\&quot;}\n    \ttimeSince: \&quot;2-Months\&quot;\n    \tdistance: {distance: \&quot;200\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n    \tmyBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;paneer\&quot;\n    \tinputSearchType: DISH #value should be VENDOR, DISH, PROFILE\n    \tdiet: [VEG,VEGAN]\n    \tdishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n    \tdishRating: [\&quot;MUST EAT\&quot;]\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n    \tpriceRange: {min: 10 , max: 300,currency:\&quot;INR\&quot;}\n    \ttimeSince: \&quot;2-Months\&quot;\n    \tdistance: {distance: \&quot;200\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n    \tmyFavouriteReview: true\n    \tmyBuddies: true\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3087,8 +3087,8 @@ if (reviewid != null) {
     	priceRange: {min: 10 , max: 300,currency:&quot;INR&quot;}
     	timeSince: &quot;2-Months&quot;
     	distance: {distance: &quot;200&quot;, longitude: &quot;73.83015&quot;, latitude: &quot;18.435658&quot;}
+    	myFavouriteReview: true
     	myBuddies: true
-
     recordsPerPage: 10
     pageNo: 1
     }){
@@ -3582,6 +3582,71 @@ if (reviewid != null) {
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review (by myFavouriteReview)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tmyFavouriteReview: true\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviews(input: {
+    	myFavouriteReview: true
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+      reviewId
+      validimage
+      userreviewcount
+      dishratingcount
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
+      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
         <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
           <collectionProp name="Asserion.test_strings">
             <stringProp name="-1294635157">errors</stringProp>
@@ -3599,7 +3664,7 @@ if (reviewid != null) {
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">0</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
