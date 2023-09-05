@@ -479,3 +479,15 @@ ALTER TABLE IF EXISTS palateapp.appusagedetails
 GRANT ALL ON TABLE palateapp.appusagedetails TO boss;
 GRANT ALL ON TABLE palateapp.appusagedetails TO palate_r_user;
 GRANT ALL ON TABLE palateapp.appusagedetails TO palate_rw_user;
+
+
+-- Table palateapp.vendor add copy of vendorname and geocode columns --
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD COLUMN vendornamepriorreconcilation character varying; 
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD COLUMN geocodepriorreconcialtion geography;
+
+update palateapp.vendor 
+SET vendornamepriorreconcilation = vendorname , geocodepriorreconcialtion = geocode
