@@ -504,3 +504,7 @@ ALTER TABLE IF EXISTS palateapp.applicationproperties
     OWNER to boss;
 GRANT ALL ON palateapp.applicationproperties to palate_r_user;
 GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
+
+
+ALTER TABLE IF EXISTS palateapp.vendor
+    ADD CONSTRAINT maps_place_id_unique UNIQUE (mapsplaceid);
