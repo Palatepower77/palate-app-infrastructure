@@ -491,3 +491,16 @@ ALTER TABLE IF EXISTS palateapp.vendor
 
 update palateapp.vendor 
 SET vendornamepriorreconcilation = vendorname , geocodepriorreconcialtion = geocode
+
+-- Table: palateapp.applicationproperties
+CREATE TABLE palateapp.applicationproperties
+(
+    property character varying NOT NULL,
+    value character varying NOT NULL,
+    PRIMARY KEY (property)
+)
+TABLESPACE pg_default;
+ALTER TABLE IF EXISTS palateapp.applicationproperties
+    OWNER to boss;
+GRANT ALL ON palateapp.applicationproperties to palate_r_user;
+GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
