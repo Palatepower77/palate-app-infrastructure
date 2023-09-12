@@ -1644,7 +1644,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      dishratingcount\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      userreviewcount\n      vendorid\n      vendorname\n      vendorAddress\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n      reviewId\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorAddress\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1666,6 +1666,66 @@ if (reviewid != null) {
         recordsPerPage: 10
         pageNo: 1
     }){
+      reviewId
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
+      vendorid
+      vendorname
+      vendorAddress
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Default Search Version 2" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultSearchV2(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorAddress\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    defaultSearchV2(input: {
+        recordsPerPage: 10
+        pageNo: 1
+    }){
     	socialMsgImageId
       reviewId
       rating
@@ -1679,13 +1739,10 @@ if (reviewid != null) {
       cuisinetype
       latitude
       longitude
-      dishratingcount
       userid
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
-      userreviewcount
       vendorid
       vendorname
       vendorAddress
@@ -1708,7 +1765,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     vendorId : 157\n    \n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     vendorId : 157\n    \n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1734,8 +1791,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -1752,7 +1807,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -1774,7 +1828,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     dishId: 370\n    \n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     dishId: 370\n    \n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1800,8 +1854,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -1818,7 +1870,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -1840,7 +1891,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     vendorId : 157\n     dishId: 370\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     vendorId : 157\n     dishId: 370\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1867,8 +1918,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -1885,7 +1934,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -1907,7 +1955,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n      vendorId : 180\n      dishId: 388\n      dishRating: [\&quot;MUST EAT\&quot;]\n\n    recordsPerPage: 100\n    pageNo: 1\n    }){\n        currency\n        validimage\n        userreviewcount\n        dishratingcount\n        reviewId\n        rating\n        reviewPhotoId\n        dishid\n        dishname\n        diet\n        dishtypes\n        dishprice\n        cuisinetype\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        userphonenumber\n        vendorid\n        vendorname\n        vendorLocality\n        vendortype\n        ratingdescription\n        dynamicLink\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n      vendorId : 180\n      dishId: 388\n      dishRating: [\&quot;MUST EAT\&quot;]\n\n    recordsPerPage: 100\n    pageNo: 1\n    }){\n        currency\n        validimage\n        reviewId\n        rating\n        reviewPhotoId\n        dishid\n        dishname\n        diet\n        dishtypes\n        dishprice\n        cuisinetype\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        vendortype\n        ratingdescription\n        dynamicLink\n        creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1935,8 +1983,6 @@ if (reviewid != null) {
     }){
         currency
         validimage
-        userreviewcount
-        dishratingcount
         reviewId
         rating
         reviewPhotoId
@@ -1953,7 +1999,6 @@ if (reviewid != null) {
         userfirstname
         handle
         userprofilephotoid
-        userphonenumber
         vendorid
         vendorname
         vendorLocality
@@ -1976,7 +2021,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     userId: 119\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     userId: 119\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2002,8 +2047,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2020,7 +2063,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -2042,7 +2084,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n      userId: 117\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n      userId: 117\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2068,8 +2110,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2086,7 +2126,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -2108,7 +2147,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 1\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 1\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2134,8 +2173,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2152,7 +2189,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -2174,7 +2210,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 730\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 730\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2200,8 +2236,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2218,7 +2252,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -2240,7 +2273,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 729\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     reviewId: 729\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2266,8 +2299,6 @@ if (reviewid != null) {
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2284,7 +2315,6 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
       vendorid
       vendorname
       vendorLocality
@@ -2306,7 +2336,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    inputString: \&quot;chicken\&quot;\n  \n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    inputString: \&quot;chicken\&quot;\n  \n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2330,11 +2360,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2351,7 +2378,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by inputString)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    inputString: \&quot;chicken\&quot;\n  \n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    inputString: &quot;chicken&quot;
+  
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2373,7 +2463,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    inputString: \&quot;chicken\&quot;\n    inputSearchType: DISH\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    inputString: \&quot;chicken\&quot;\n    inputSearchType: DISH\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2398,11 +2488,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2419,7 +2506,71 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by inputSearchType-DISH)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    inputString: \&quot;chicken\&quot;\n    inputSearchType: DISH\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    inputString: &quot;chicken&quot;
+    inputSearchType: DISH
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2441,7 +2592,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;Hotel Del Luna\&quot;\n    \tinputSearchType: VENDOR\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;Hotel Del Luna\&quot;\n    \tinputSearchType: VENDOR\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2466,11 +2617,8 @@ if (reviewid != null) {
      recordsPerPage: 10
      pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2487,7 +2635,71 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by inputSearchType-VENDOR)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tinputString: \&quot;Hotel Del Luna\&quot;\n    \tinputSearchType: VENDOR\n\n     recordsPerPage: 10\n     pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	inputString: &quot;Hotel Del Luna&quot;
+    	inputSearchType: VENDOR
+
+     recordsPerPage: 10
+     pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2509,7 +2721,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;Ak\&quot;\n    \tinputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;Ak\&quot;\n    \tinputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2534,11 +2746,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2555,7 +2764,71 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by inputSearchType-PROFILE)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tinputString: \&quot;Ak\&quot;\n    \tinputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	inputString: &quot;Ak&quot;
+    	inputSearchType: PROFILE
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2577,7 +2850,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     diet: [VEG,VEGAN]\n     dishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n     diet: [VEG,VEGAN]\n     dishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2602,11 +2875,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2623,7 +2893,71 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by diet and dishTypes)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n     diet: [VEG,VEGAN]\n     dishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+     diet: [VEG,VEGAN]
+     dishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2645,7 +2979,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2669,11 +3003,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2690,7 +3021,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by vendorType)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	vendorType: [&quot;CAFE&quot;,&quot;OUTLET&quot;,&quot;RESTAURANT&quot;]
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2712,7 +3106,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2736,11 +3130,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2757,7 +3148,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by cuisineType)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	cuisineType: [&quot;INDIAN&quot;,&quot;ITALIAN&quot;,&quot;NORTH INDIAN&quot;]
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2779,7 +3233,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tpriceRange: {min: 10 , max: 300, currency:\&quot;INR\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tpriceRange: {min: 10 , max: 300, currency:\&quot;INR\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2803,11 +3257,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2824,7 +3275,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by priceRange)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tpriceRange: {min: 10 , max: 300, currency:\&quot;INR\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	priceRange: {min: 10 , max: 300, currency:&quot;INR&quot;}
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2846,7 +3360,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \ttimeSince: \&quot;72-Hrs\&quot;\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \ttimeSince: \&quot;72-Hrs\&quot;\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2870,11 +3384,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2891,7 +3402,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by timeSince)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \ttimeSince: \&quot;72-Hrs\&quot;\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	timeSince: &quot;72-Hrs&quot;
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2913,7 +3487,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tdistance: {distance: \&quot;50\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tdistance: {distance: \&quot;50\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -2937,11 +3511,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -2958,7 +3529,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by distance)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tdistance: {distance: \&quot;50\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	distance: {distance: &quot;50&quot;, longitude: &quot;73.83015&quot;, latitude: &quot;18.435658&quot;}
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -2980,7 +3614,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tmyBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tmyBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3004,11 +3638,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -3025,7 +3656,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by myBuddies)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tmyBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	myBuddies: true
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -3047,7 +3741,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;chicken\&quot;\n    \tinputSearchType: DISH #value should be VENDOR, DISH, PROFILE\n    \tdiet: [VEG,VEGAN]\n    \tdishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n    \tdishRating: [\&quot;MUST EAT\&quot;]\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n    \tpriceRange: {min: 10 , max: 300,currency:\&quot;INR\&quot;}\n    \ttimeSince: \&quot;2-Months\&quot;\n    \tdistance: {distance: \&quot;200\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n    \tmyFavouriteReview: true\n    \tmyBuddies: true\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tinputString: \&quot;chicken\&quot;\n    \tinputSearchType: DISH #value should be VENDOR, DISH, PROFILE\n    \tdiet: [VEG,VEGAN]\n    \tdishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n    \tdishRating: [\&quot;MUST EAT\&quot;]\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n    \tpriceRange: {min: 10 , max: 300,currency:\&quot;INR\&quot;}\n    \ttimeSince: \&quot;2-Months\&quot;\n    \tdistance: {distance: \&quot;200\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n    \tmyFavouriteReview: true\n    \tmyBuddies: true\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3081,11 +3775,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -3102,7 +3793,81 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2(multiple values search)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tinputString: \&quot;chicken\&quot;\n    \tinputSearchType: DISH #value should be VENDOR, DISH, PROFILE\n    \tdiet: [VEG,VEGAN]\n    \tdishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]\n    \tdishRating: [\&quot;MUST EAT\&quot;]\n    \tvendorType: [\&quot;CAFE\&quot;,\&quot;OUTLET\&quot;,\&quot;RESTAURANT\&quot;]\n    \tcuisineType: [\&quot;INDIAN\&quot;,\&quot;ITALIAN\&quot;,\&quot;NORTH INDIAN\&quot;]\n    \tpriceRange: {min: 10 , max: 300,currency:\&quot;INR\&quot;}\n    \ttimeSince: \&quot;2-Months\&quot;\n    \tdistance: {distance: \&quot;200\&quot;, longitude: \&quot;73.83015\&quot;, latitude: \&quot;18.435658\&quot;}\n    \tmyFavouriteReview: true\n    \tmyBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	inputString: &quot;chicken&quot;
+    	inputSearchType: DISH #value should be VENDOR, DISH, PROFILE
+    	diet: [VEG,VEGAN]
+    	dishTypes: [FAST_FOOD, DINNER, DESSERT, BRUNCH]
+    	dishRating: [&quot;MUST EAT&quot;]
+    	vendorType: [&quot;CAFE&quot;,&quot;OUTLET&quot;,&quot;RESTAURANT&quot;]
+    	cuisineType: [&quot;INDIAN&quot;,&quot;ITALIAN&quot;,&quot;NORTH INDIAN&quot;]
+    	priceRange: {min: 10 , max: 300,currency:&quot;INR&quot;}
+    	timeSince: &quot;2-Months&quot;
+    	distance: {distance: &quot;200&quot;, longitude: &quot;73.83015&quot;, latitude: &quot;18.435658&quot;}
+    	myFavouriteReview: true
+    	myBuddies: true
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -3124,7 +3889,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3146,11 +3911,8 @@ if (reviewid != null) {
     recordsPerPage: 10
     pageNo: 1
     }){
-    	socialMsgImageId
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -3167,7 +3929,68 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by user preference)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+    	socialMsgImageId
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
@@ -3578,7 +4401,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tmyFavouriteReview: true\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n      reviewId\n      validimage\n      userreviewcount\n      dishratingcount\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      userphonenumber\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviews(input: {\n    \tmyFavouriteReview: true\n    \t\n    \trecordsPerPage: 10\n    \tpageNo: 1\n    }){\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -3598,13 +4421,12 @@ if (reviewid != null) {
           <stringProp name="GraphQLHTTPSampler.query">query{
     searchReviews(input: {
     	myFavouriteReview: true
-    recordsPerPage: 10
-    pageNo: 1
+    	
+    	recordsPerPage: 10
+    	pageNo: 1
     }){
       reviewId
       validimage
-      userreviewcount
-      dishratingcount
       rating
       reviewPhotoId
       dishid
@@ -3621,7 +4443,70 @@ if (reviewid != null) {
       userfirstname
       handle
       userprofilephotoid
-      userphonenumber
+      vendorid
+      vendorname
+      vendorLocality
+      vendortype
+      ratingdescription
+      dynamicLink
+      creationtime
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search Review Version 2 (by myFavouriteReview)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tmyFavouriteReview: true\n    \t\n    \trecordsPerPage: 10\n    \tpageNo: 1\n    }){\n    \tsocialMsgImageUrl\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchReviewsV2(input: {
+    	myFavouriteReview: true
+    	
+    	recordsPerPage: 10
+    	pageNo: 1
+    }){
+    	socialMsgImageUrl
+      reviewId
+      validimage
+      rating
+      reviewPhotoId
+      dishid
+      dishname
+      diet
+      dishtypes
+      dishprice
+      currency
+      cuisinetype
+      latitude
+      longitude
+      distanceInKM
+      userid
+      userfirstname
+      handle
+      userprofilephotoid
       vendorid
       vendorname
       vendorLocality
