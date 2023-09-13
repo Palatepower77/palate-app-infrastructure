@@ -508,3 +508,10 @@ GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
 
 ALTER TABLE IF EXISTS palateapp.vendor
     ADD CONSTRAINT maps_place_id_unique UNIQUE (mapsplaceid);
+
+
+-- Table: palateapp.vendor -- Query for setting custom mapsplaceid to Vendor table  
+
+UPDATE palateapp.vendor
+SET mapsplaceid = 'palate_' || gen_random_uuid()::text
+WHERE mapsplaceid IS NULL OR mapsplaceid = '';
