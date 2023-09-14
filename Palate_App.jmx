@@ -160,7 +160,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation SaveUser($input: UserInput!)  { saveUser(input: $input)   { success      user {          handle         firstname          lastname         email         profilephotoid         bio       }    }  }&quot;, &quot;variables&quot;:  {&quot;input&quot;:      {    &quot;handle&quot;:&quot;Riya&quot;,    &quot;firstname&quot;:&quot;Riya&quot;,    &quot;lastname&quot;:&quot;D&quot;,    &quot;gender&quot;:&quot;Female&quot;,    &quot;dob&quot;:&quot;2000-01-22&quot;,    &quot;email&quot;:&quot;riya@gmail.com&quot;,    &quot;bio&quot;: &quot;It Student&quot;   }  } }</stringProp>
+                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation SaveUser($input: UserInput!) {\n  saveUser(input: $input) {\n    success\n    user {\n      firstname\n      lastname\n      profilephotoid\n      bio\n      otpoptin\n    }\n  }\n}&quot;,   &quot;variables&quot;: {     &quot;input&quot;: {       &quot;handle&quot;: &quot;testUser&quot;,       &quot;firstname&quot;: &quot;TestUserFname&quot;,       &quot;lastname&quot;: &quot;TestUserLname&quot;,       &quot;gender&quot;: &quot;Male&quot;,       &quot;dob&quot;: &quot;2002-11-22&quot;,       &quot;email&quot;: &quot;uestuser@gmail.com&quot;,       &quot;bio&quot;: &quot;fooldie + moodie&quot;,       &quot;otpoptin&quot;: true     }   } } </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -5892,7 +5892,7 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
           </elementProp>
           <elementProp name="token" elementType="Argument">
             <stringProp name="Argument.name">token</stringProp>
-            <stringProp name="Argument.value"> ${__P(TOKEN)}</stringProp>
+            <stringProp name="Argument.value">${__P(TOKEN)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Enter your token instead of  ${__P(TOKEN)}</stringProp>
           </elementProp>
