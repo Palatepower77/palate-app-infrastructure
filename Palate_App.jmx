@@ -160,7 +160,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation SaveUser($input: UserInput!)  { saveUser(input: $input)   { success      user {          handle         firstname          lastname         email         profilephotoid         bio       }    }  }&quot;, &quot;variables&quot;:  {&quot;input&quot;:      {    &quot;handle&quot;:&quot;Riya&quot;,    &quot;firstname&quot;:&quot;Riya&quot;,    &quot;lastname&quot;:&quot;D&quot;,    &quot;gender&quot;:&quot;Female&quot;,    &quot;dob&quot;:&quot;2000-01-22&quot;,    &quot;email&quot;:&quot;riya@gmail.com&quot;,    &quot;bio&quot;: &quot;It Student&quot;   }  } }</stringProp>
+                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation SaveUser($input: UserInput!) {\n  saveUser(input: $input) {\n    success\n    user {\n      firstname\n      lastname\n      profilephotoid\n      bio\n      otpoptin\n    }\n  }\n}&quot;,   &quot;variables&quot;: {     &quot;input&quot;: {       &quot;handle&quot;: &quot;akashdhekane&quot;,       &quot;firstname&quot;: &quot;Akash&quot;,       &quot;lastname&quot;: &quot;dhrkane&quot;,       &quot;gender&quot;: &quot;Male&quot;,       &quot;dob&quot;: &quot;2002-11-22&quot;,       &quot;email&quot;: &quot;akashrajendra1206@gmail.com&quot;,       &quot;bio&quot;: &quot;fooldie + moodie&quot;,       &quot;otpoptin&quot;: true     }   } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -316,78 +316,6 @@
           <stringProp name="GraphQLHTTPSampler.query">query{
    getUser(input: {
     id : 117
-    }){
-        isMyBuddy
-        user {
-            id
-            handle
-            firstname
-            lastname
-            gender
-            dob
-            email
-            phonenumber
-            profilephotoid
-            bio
-            buddylist {
-             id
-             handle
-             firstname
-             lastname
-             gender
-             dob
-             email
-             phonenumber
-             profilephotoid
-             bio
-        }
-    }
-    }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-            <collectionProp name="Asserion.test_strings">
-              <stringProp name="-1294635157">errors</stringProp>
-              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
-            </collectionProp>
-            <stringProp name="Assertion.custom_message"></stringProp>
-            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-            <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">6</intProp>
-          </ResponseAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get User (by handle)" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument" enabled="true">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n   getUser(input: {\n    handle : \&quot;Riya\&quot;\n    }){\n        isMyBuddy\n        user {\n            id\n            handle\n            firstname\n            lastname\n            gender\n            dob\n            email\n            phonenumber\n            profilephotoid\n            bio\n            buddylist {\n             id\n             handle\n             firstname\n             lastname\n             gender\n             dob\n             email\n             phonenumber\n             profilephotoid\n             bio\n        }\n    }\n    }\n}&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/graphql</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query{
-   getUser(input: {
-    handle : &quot;Riya&quot;
     }){
         isMyBuddy
         user {
@@ -858,6 +786,78 @@
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Get User (by handle)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n   getUser(input: {\n    handle : \&quot;Riya\&quot;\n    }){\n        isMyBuddy\n        user {\n            id\n            handle\n            firstname\n            lastname\n            gender\n            dob\n            email\n            phonenumber\n            profilephotoid\n            bio\n            buddylist {\n             id\n             handle\n             firstname\n             lastname\n             gender\n             dob\n             email\n             phonenumber\n             profilephotoid\n             bio\n        }\n    }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+   getUser(input: {
+    handle : &quot;Riya&quot;
+    }){
+        isMyBuddy
+        user {
+            id
+            handle
+            firstname
+            lastname
+            gender
+            dob
+            email
+            phonenumber
+            profilephotoid
+            bio
+            buddylist {
+             id
+             handle
+             firstname
+             lastname
+             gender
+             dob
+             email
+             phonenumber
+             profilephotoid
+             bio
+        }
+    }
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -5892,7 +5892,7 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
           </elementProp>
           <elementProp name="token" elementType="Argument">
             <stringProp name="Argument.name">token</stringProp>
-            <stringProp name="Argument.value"> ${__P(TOKEN)}</stringProp>
+            <stringProp name="Argument.value"> eyJraWQiOiJSbWs4b0NuYzJ0QUdja1hcL01YeTdcL09IcmtPNGhyU1pwaThiZjVJT3FwQ289IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJkNzg3MzNhNi0wODViLTRjNmEtYjRlOS01ZDQ4ZWFiZjE1ZjUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGgtMS5hbWF6b25hd3MuY29tXC9hcC1zb3V0aC0xX3poS2JBaW9SMyIsImNsaWVudF9pZCI6IjdmNGh0cmJ1NGV2cWE2ZWp0dGRkaGVtNzNrIiwib3JpZ2luX2p0aSI6IjljOTA3MjU0LTljNjEtNDg3NS05ZGQ0LTMxNzYzMTY0ZGRmNiIsImV2ZW50X2lkIjoiNGY2ZWQ3Y2UtMzRmMi00ODVmLWJjMWMtMjMwYmM0ZmU0YTNkIiwidG9rZW5fdXNlIjoiYWNjZXNzIiwic2NvcGUiOiJhd3MuY29nbml0by5zaWduaW4udXNlci5hZG1pbiIsImF1dGhfdGltZSI6MTY5NDE1Mjc2NCwiZXhwIjoxNjk0MjM5MTY0LCJpYXQiOjE2OTQxNTI3NjQsImp0aSI6ImFlNGFhMjYyLWIwN2ItNDQ0MS1iYmExLTE5ZWYwNWEzZmMzZCIsInVzZXJuYW1lIjoiOTE5ODIzNTA2MDg1In0.VF6kniPpaA04m5__mKFKyw-NRzRgZcNy3yygvCkjNkGzFGXvAfRfpJ5V1ODw5abuXqn169Asmnw9aelYmekENP-jnE8l_mqxGmpnO6CWVi3v-cwdqrrIopYv3vJIqN5fo7AWanaNoH1bv0muwX1rBidcSb1x_ef0-l8Ftyp2BDWeXnysMd1GrRSh2j1vlH53HFmnjovv8GclWi0TYNqf1ZcS4IfOJEjL8sw9jDuJOS07QPgNZWfKnJDy7Wvjjfqtpa4aluu2G6CVkiQSY4PcrTjSc21OVjsKyxGH4YNJW5ckeJTnbwF08baBGxXg6ubSmKG1HfNn2N1CbHHJDpmFBQ</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Enter your token instead of  ${__P(TOKEN)}</stringProp>
           </elementProp>
