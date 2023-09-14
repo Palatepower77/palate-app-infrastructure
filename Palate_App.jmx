@@ -4464,7 +4464,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tmyFavouriteReview: true\n    \t\n    \trecordsPerPage: 10\n    \tpageNo: 1\n    }){\n    \tsocialMsgImageUrl\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchReviewsV2(input: {\n    \tmyFavouriteReview: true\n    \t\n    \trecordsPerPage: 10\n    \tpageNo: 1\n    }){\n    \tsocialMsgImageId\n      reviewId\n      validimage\n      rating\n      reviewPhotoId\n      dishid\n      dishname\n      diet\n      dishtypes\n      dishprice\n      currency\n      cuisinetype\n      latitude\n      longitude\n      distanceInKM\n      userid\n      userfirstname\n      handle\n      userprofilephotoid\n      vendorid\n      vendorname\n      vendorLocality\n      vendortype\n      ratingdescription\n      dynamicLink\n      creationtime\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -4488,7 +4488,7 @@ if (reviewid != null) {
     	recordsPerPage: 10
     	pageNo: 1
     }){
-    	socialMsgImageUrl
+    	socialMsgImageId
       reviewId
       validimage
       rating
