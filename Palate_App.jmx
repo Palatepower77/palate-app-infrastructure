@@ -43,7 +43,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/signup</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/signup</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -64,6 +64,41 @@
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import java.nio.charset.StandardCharsets
+import org.apache.commons.codec.binary.Base64
+
+// current UTC time in milliseconds
+def currentTimeInMilliseconds = new Date().getTime().toString()
+
+def encrypt(text) {
+    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
+    def iv = &quot;palatepowerfoodi&quot;
+
+    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
+    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
+
+    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
+    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
+
+    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
+    return Base64.encodeBase64String(encryptedBytes)
+}
+
+def encryptedTime = encrypt(currentTimeInMilliseconds)
+
+// Set header in JMeter
+sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -83,7 +118,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/login</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/login</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -103,6 +138,41 @@
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import java.nio.charset.StandardCharsets
+import org.apache.commons.codec.binary.Base64
+
+// current UTC time in milliseconds
+def currentTimeInMilliseconds = new Date().getTime().toString()
+
+def encrypt(text) {
+    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
+    def iv = &quot;palatepowerfoodi&quot;
+
+    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
+    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
+
+    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
+    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
+
+    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
+    return Base64.encodeBase64String(encryptedBytes)
+}
+
+def encryptedTime = encrypt(currentTimeInMilliseconds)
+
+// Set header in JMeter
+sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Login" enabled="true">
@@ -124,7 +194,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/confirm-login</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/confirm-login</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1621,6 +1691,191 @@ if (reviewid != null) {
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post Taster Review (with valid image)" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="images/paneer-koftaa.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">image/jpeg</stringProp>
+                <stringProp name="File.path">images/paneer-koftaa.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="operations" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 5,       &quot;vendorName&quot;: &quot;kawle hotel, Devgad                                            416613, India&quot;,       &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;74.39021445396936&quot;,       &quot;latitude&quot;: &quot;18.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">operations</stringProp>
+                <stringProp name="HTTPArgument.content_type">multipart/form-data</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+def tasterid = json.data.PostTasterReview.taster.id
+def photoid = json.data.PostTasterReview.taster.photoId
+
+if (tasterid != null &amp;&amp; photoid != null) {
+    props.put(&quot;tasterid&quot;, tasterid.toString())
+    props.put(&quot;dishPhotoId&quot;, photoid.toString())
+}
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post Taster Review (with invalid image)" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="images/paneer-koftaa.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">image/jpeg</stringProp>
+                <stringProp name="File.path">images/paneer-koftaa.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="operations" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 5,       &quot;vendorName&quot;: &quot;kawle hotel, Devgad                                            416613, India&quot;,       &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;74.39021445396936&quot;,       &quot;latitude&quot;: &quot;18.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">operations</stringProp>
+                <stringProp name="HTTPArgument.content_type">multipart/form-data</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def response = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(response)
+
+def tasterid = json.data.PostTasterReview.taster.id
+
+if (tasterid != null) {
+    props.put(&quot;invalidTasterId&quot;, tasterid.toString())
+}
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update Taster Review" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="images/paneer-koftaa.jpg" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">image/jpeg</stringProp>
+                <stringProp name="File.path">images/paneer-koftaa.jpg</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="operations" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {      &quot;id&quot;:${__P(tasterId)},       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 4,       &quot;vendorName&quot;: &quot;Hotel Diamond, Devgad 416613, India&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;73.39021445396936&quot;,       &quot;latitude&quot;: &quot;16.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">operations</stringProp>
+                <stringProp name="HTTPArgument.content_type">multipart/form-data</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -5871,6 +6126,18 @@ query{
             <stringProp name="Header.name">Content-Type</stringProp>
             <stringProp name="Header.value">application/json</stringProp>
           </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name"></stringProp>
+            <stringProp name="Header.value"></stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">Dart/3.1</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">app-info</stringProp>
+            <stringProp name="Header.value">{ &quot;package_name&quot;: &quot;com.power.palate&quot;, &quot;deviceToken&quot;: &quot;de60d605b2732&quot;, &quot;manufacturer&quot;: &quot;Xiaomi&quot;, &quot;device_model&quot;: &quot;Redmi 8A Dual&quot;, &quot;timestamp&quot;: &quot;1700664807101&quot;, &quot;isPhysicalDevice&quot;: true, &quot;app_version&quot;: &quot;1.4.4&quot;,    &quot;platform&quot;: &quot;Android&quot;}</stringProp>
+          </elementProp>
         </collectionProp>
       </HeaderManager>
       <hashTree/>
@@ -5899,6 +6166,16 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
           <elementProp name="phoneNumber" elementType="Argument">
             <stringProp name="Argument.name">phoneNumber</stringProp>
             <stringProp name="Argument.value">919876543210</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="iv" elementType="Argument">
+            <stringProp name="Argument.name">iv</stringProp>
+            <stringProp name="Argument.value">palatepowerfoodi</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="secretKey" elementType="Argument">
+            <stringProp name="Argument.name">secretKey</stringProp>
+            <stringProp name="Argument.value">mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
