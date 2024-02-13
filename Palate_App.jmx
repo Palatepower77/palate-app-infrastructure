@@ -4789,6 +4789,413 @@ if (tasterid != null) {
           <intProp name="Assertion.test_type">6</intProp>
         </ResponseAssertion>
         <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Default Taster  Search" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultTasterSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n        socialMsgImageId\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        validimage\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    defaultTasterSearch(input: {
+        recordsPerPage: 10
+        pageNo: 1
+    }){
+        socialMsgImageId
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+        validimage
+    }
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by vendorId)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       vendorId : 99\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+       vendorId : 99
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by userId)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       userId: 49\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+       userId: 49
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by tasterId)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       tasterId: 20\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+       tasterId: 20
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by Multiple Search)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      dishRating: [\&quot;RECOMMENDED\&quot;, \&quot;MUST EAT\&quot;]\n    \t inputString: \&quot;pramila@palate\&quot;\n    \t inputSearchType: PROFILE #value should be VENDOR, PROFILE\n    \t diet: [VEG,VEGAN, NON_VEG]\n    \t timeSince: \&quot;500-Hrs\&quot;\n    \t distance: {distance: \&quot;0.11\&quot;, longitude: \&quot;80.64646479999999\&quot;, latitude: \&quot;16.5051486\&quot;}\n    \t myBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+      dishRating: [&quot;RECOMMENDED&quot;, &quot;MUST EAT&quot;]
+    	 inputString: &quot;pramila@palate&quot;
+    	 inputSearchType: PROFILE #value should be VENDOR, PROFILE
+    	 diet: [VEG,VEGAN, NON_VEG]
+    	 timeSince: &quot;500-Hrs&quot;
+    	 distance: {distance: &quot;0.11&quot;, longitude: &quot;80.64646479999999&quot;, latitude: &quot;16.5051486&quot;}
+    	 myBuddies: true
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by inputSearchType-VENDOR)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Barkaas Arabic Restaurant\&quot;\n    \t inputSearchType: VENDOR\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+    	 inputString: &quot;Barkaas Arabic Restaurant&quot;
+    	 inputSearchType: VENDOR
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by inputSearchType-PROFILE)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Venkat\&quot;\n    \t inputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+    	 inputString: &quot;Venkat&quot;
+    	 inputSearchType: PROFILE
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+    }
+}
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Common Data API" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
