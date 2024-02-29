@@ -230,7 +230,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation SaveUser($input: UserInput!) {\n  saveUser(input: $input) {\n    success\n    user {\n      firstname\n      lastname\n      profilephotoid\n      bio\n      otpoptin\n    }\n  }\n}&quot;,   &quot;variables&quot;: {     &quot;input&quot;: {       &quot;handle&quot;: &quot;testUser&quot;,       &quot;firstname&quot;: &quot;TestUserFname&quot;,       &quot;lastname&quot;: &quot;TestUserLname&quot;,       &quot;gender&quot;: &quot;Male&quot;,       &quot;dob&quot;: &quot;2002-11-22&quot;,       &quot;email&quot;: &quot;uestuser@gmail.com&quot;,       &quot;bio&quot;: &quot;fooldie + moodie&quot;,       &quot;otpoptin&quot;: true     }   } } </stringProp>
+                <stringProp name="Argument.value">{ &quot;query&quot;: &quot;mutation SaveUser($input: UserInput!) { saveUser(input: $input) { success user { firstname lastname profilephotoid, bio, dob, gender } } }&quot;, &quot;variables&quot;: { &quot;input&quot;: { &quot;handle&quot;: &quot;Venkat&quot;, &quot;firstname&quot;: &quot;Venkateswararao&quot;, &quot;lastname&quot;: &quot;K&quot;, &quot;gender&quot;: &quot;Male&quot;, &quot;dob&quot;: &quot;1992-02-05&quot;, &quot;email&quot;: &quot;venkatkondeti@vivnaet.in&quot;, &quot;bio&quot;: &quot;IT Student&quot; } } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -438,7 +438,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n   getUser(input: {\n    handle : \&quot;Riya\&quot;\n    }){\n        isMyBuddy\n        user {\n            id\n            handle\n            firstname\n            lastname\n            gender\n            dob\n            email\n            phonenumber\n            profilephotoid\n            bio\n            buddylist {\n             id\n             handle\n             firstname\n             lastname\n             gender\n             dob\n             email\n             phonenumber\n             profilephotoid\n             bio\n        }\n    }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n   getUser(input: {\n    handle : \&quot;Venkat\&quot;\n    }){\n        isMyBuddy\n        user {\n            id\n            handle\n            firstname\n            lastname\n            gender\n            dob\n            email\n            phonenumber\n            profilephotoid\n            bio\n            buddylist {\n             id\n             handle\n             firstname\n             lastname\n             gender\n             dob\n             email\n             phonenumber\n             profilephotoid\n             bio\n        }\n    }\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -457,7 +457,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query{
    getUser(input: {
-    handle : &quot;Riya&quot;
+    handle : &quot;Venkat&quot;
     }){
         isMyBuddy
         user {
@@ -931,6 +931,36 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download Dish Photo" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/download-profile/00AvGn3Pjb_1707143291873</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Review API" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -1170,7 +1200,7 @@ if (reviewid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download Dish Picture" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download Social Msg Image" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -1178,7 +1208,7 @@ if (reviewid != null) {
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/review-api/download-file/${__P(dishPhotoId)}</stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/download-file/7E9A6076-87AB-41BF-91AC-5A938C051FAF.png?isSocialMessage=true</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1214,51 +1244,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;query&quot;:
- &quot;mutation 
- ($dishReview: DishReviewInput!) 
-  {UpdateDishReview
-   (dishReview: $dishReview)
-   { success
-    dishReview
-     { id
-      userId
-      dishId
-      cuisineType
-      rating
-      photoId
-      dishPrice
-      currencyCode
-      vendorId
-      dishName
-      diet 
-      dishTypes 
-      longitude 
-      latitude 
-     } 
-    } 
-  }&quot;,
-  &quot;variables&quot;:
-   {&quot;dishReview&quot;:                    
-     {
-      &quot;id&quot;:${__P(reviewId)},
-      &quot;dishId&quot;:1,                    
-      &quot;cuisineType&quot;:&quot;INDIAN&quot;,
-      &quot;rating&quot;:4,
-      &quot;dishPrice&quot;:50,
-      &quot;currencyCode&quot;:&quot;INR&quot;,
-      &quot;vendorName&quot;:&quot;Purva resort, Revtale Road, Malvan 416606, India&quot;,
-      &quot;placeId&quot;:&quot;ChIJVVVVRbD6NToRmCNT6iDwguE&quot;,
-      &quot;vendorType&quot;:&quot;RESTAURANT&quot;,
-      &quot;vendorSource&quot;:&quot;CUSTOM&quot;,
-      &quot;dishName&quot;:&quot;Imarti&quot;,
-      &quot;diet&quot;:&quot;VEG&quot;,
-   	 &quot;dishTypes&quot;:[&quot;MAINS&quot;,&quot;BRUNCH&quot;],
-      &quot;longitude&quot;:&quot;73.37484&quot;,
-      &quot;latitude&quot;:&quot;16.371944&quot;
-    }
-   }
-}</stringProp>
+                <stringProp name="Argument.value">{&quot;query&quot;:  &quot;mutation   ($dishReview: DishReviewInput!)    {UpdateDishReview    (dishReview: $dishReview)    { success     dishReview      { id       userId       dishId       cuisineType       rating       photoId       dishPrice       currencyCode       vendorId       dishName       diet        dishTypes        longitude        latitude       }      }    }&quot;,   &quot;variables&quot;:    {&quot;dishReview&quot;:                          {       &quot;id&quot;:${__P(reviewId)},       &quot;dishId&quot;:1,                           &quot;cuisineType&quot;:&quot;INDIAN&quot;,       &quot;rating&quot;:4,       &quot;dishPrice&quot;:50,       &quot;currencyCode&quot;:&quot;INR&quot;,       &quot;vendorName&quot;:&quot;Purva resort, Revtale Road, Malvan 416606, India&quot;,       &quot;placeId&quot;:&quot;ChIJVVVVRbD6NToRmCNT6iDwguE&quot;,       &quot;vendorType&quot;:&quot;RESTAURANT&quot;,       &quot;vendorSource&quot;:&quot;CUSTOM&quot;,       &quot;dishName&quot;:&quot;Imarti&quot;,       &quot;diet&quot;:&quot;VEG&quot;,    	 &quot;dishTypes&quot;:[&quot;MAINS&quot;,&quot;BRUNCH&quot;],       &quot;longitude&quot;:&quot;73.37484&quot;,       &quot;latitude&quot;:&quot;16.371944&quot;     }    } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -1708,7 +1694,7 @@ if (reviewid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 5,       &quot;vendorName&quot;: &quot;kawle hotel, Devgad                                            416613, India&quot;,       &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;74.39021445396936&quot;,       &quot;latitude&quot;: &quot;18.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.value">{ &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude isHomeMade}} }&quot;, &quot;variables&quot;: { &quot;tasterReview&quot;: { &quot;phoneNumber&quot;: 918074204477, &quot;rating&quot;: 4, &quot;isHomeMade&quot;: false, &quot;vendorName&quot;: &quot;har9, Achara 416613, India&quot;, &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;, &quot;vendorSource&quot;: &quot;AWS&quot;, &quot;diet&quot;: &quot;VEG&quot;, &quot;longitude&quot;: &quot;74.39021445396936&quot;, &quot;latitude&quot;: &quot;18.38134125355266&quot; } } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -1741,13 +1727,16 @@ if (reviewid != null) {
 def response = prev.getResponseDataAsString()
 def json = new JsonSlurper().parseText(response)
 
-def tasterid = json.data.PostTasterReview.taster.id
-def photoid = json.data.PostTasterReview.taster.photoId
+def tasterid = json.data.PostTasterReview.tasterReview.id
+def tasterphotoid = json.data.PostTasterReview.tasterReview.photoId
 
-if (tasterid != null &amp;&amp; photoid != null) {
-    props.put(&quot;tasterid&quot;, tasterid.toString())
-    props.put(&quot;dishPhotoId&quot;, photoid.toString())
+if (tasterid != null &amp;&amp; tasterphotoid != null) {
+    props.put(&quot;tasterId&quot;, tasterid.toString())
+    props.put(&quot;tasterPhotoId&quot;, tasterphotoid.toString())
+	// Adding a time interval of 5 seconds (5000 milliseconds)
+//    Thread.sleep(3000)
 }
+
 </stringProp>
           </JSR223PostProcessor>
           <hashTree/>
@@ -1777,7 +1766,7 @@ if (tasterid != null &amp;&amp; photoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 5,       &quot;vendorName&quot;: &quot;kawle hotel, Devgad                                            416613, India&quot;,       &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;74.39021445396936&quot;,       &quot;latitude&quot;: &quot;18.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.value">{ &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude isHomeMade}} }&quot;, &quot;variables&quot;: { &quot;tasterReview&quot;: { &quot;phoneNumber&quot;: 918074204477, &quot;rating&quot;: 4, &quot;isHomeMade&quot;: false, &quot;vendorName&quot;: &quot;har9, Achara 416613, India&quot;, &quot;placeId&quot;:&quot;ChIJ_cQqELr6NToRmQ4Plzm_t58&quot;, &quot;vendorSource&quot;: &quot;AWS&quot;, &quot;diet&quot;: &quot;VEG&quot;, &quot;longitude&quot;: &quot;74.39021445396936&quot;, &quot;latitude&quot;: &quot;18.38134125355266&quot; } } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -1810,10 +1799,14 @@ if (tasterid != null &amp;&amp; photoid != null) {
 def response = prev.getResponseDataAsString()
 def json = new JsonSlurper().parseText(response)
 
-def tasterid = json.data.PostTasterReview.taster.id
+def invalidtasterid = json.data.PostTasterReview.tasterReview.id
+def invalidtasterphotoid = json.data.PostTasterReview.tasterReview.photoId
 
-if (tasterid != null) {
-    props.put(&quot;invalidTasterId&quot;, tasterid.toString())
+if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
+    props.put(&quot;invalidTasterId&quot;, invalidtasterid.toString())
+    props.put(&quot;invalidTasterPhotoId&quot;, tasterphotoid.toString())
+    // Adding a time interval of 5 seconds (5000 milliseconds)
+//    Thread.sleep(3000)
 }
 </stringProp>
           </JSR223PostProcessor>
@@ -1844,7 +1837,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{   &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude } } }&quot;,   &quot;variables&quot;: {     &quot;tasterReview&quot;: {      &quot;id&quot;:${__P(tasterId)},       &quot;phoneNumber&quot;: 918275353923,       &quot;rating&quot;: 4,       &quot;vendorName&quot;: &quot;Hotel Diamond, Devgad 416613, India&quot;,       &quot;vendorSource&quot;: &quot;AWS&quot;,       &quot;diet&quot;: &quot;NON_VEG&quot;,       &quot;longitude&quot;: &quot;73.39021445396936&quot;,       &quot;latitude&quot;: &quot;16.38134125355266&quot;     }   } }</stringProp>
+                <stringProp name="Argument.value">{ &quot;query&quot;: &quot;mutation ($tasterReview: TasterReviewInput!) { PostTasterReview(tasterReview: $tasterReview) { success tasterReview { id userId rating photoId vendorId diet longitude latitude isHomeMade} } }&quot;, &quot;variables&quot;: { &quot;tasterReview&quot;: {  &quot;id&quot;:${__P(tasterId)}, &quot;phoneNumber&quot;: 918074204477, &quot;rating&quot;: 3, &quot;isHomeMade&quot;: false, &quot;vendorName&quot;: &quot;Hotel Diamond, Devgad 416613, India&quot;, &quot;vendorSource&quot;: &quot;AWS&quot;, &quot;diet&quot;: &quot;NON_VEG&quot;,   &quot;longitude&quot;: &quot;73.39021445396936&quot;, &quot;latitude&quot;: &quot;16.38134125355266&quot; } } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -1862,6 +1855,94 @@ if (tasterid != null) {
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with valid image)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation{\n    DeleteTasterReview(id:${__P(tasterId)})\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation{
+    DeleteTasterReview(id:${__P(tasterId)})
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1294635157">errors</stringProp>
+              <stringProp name="184708874">&quot;success&quot;:false</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">6</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with invalid image)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation{\n    DeleteTasterReview(id:${__P(invalidTasterId)})\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation{
+    DeleteTasterReview(id:${__P(invalidTasterId)})
+}</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -4794,7 +4875,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultTasterSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n        socialMsgImageId\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        validimage\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultTasterSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n        socialMsgImageId\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        validimage\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -4833,6 +4914,7 @@ if (tasterid != null) {
         ratingdescription
         creationtime
         validimage
+        isHomeMade
     }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
@@ -4847,7 +4929,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       vendorId : 99\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       vendorId : 99\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -4889,6 +4971,7 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
 </stringProp>
@@ -4904,7 +4987,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       userId: 49\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       userId: 49\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -4946,6 +5029,7 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
 
@@ -4962,7 +5046,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       tasterId: 20\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       tasterId: 20\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5004,6 +5088,7 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
 
@@ -5020,7 +5105,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      dishRating: [\&quot;RECOMMENDED\&quot;, \&quot;MUST EAT\&quot;]\n    \t inputString: \&quot;pramila@palate\&quot;\n    \t inputSearchType: PROFILE #value should be VENDOR, PROFILE\n    \t diet: [VEG,VEGAN, NON_VEG]\n    \t timeSince: \&quot;500-Hrs\&quot;\n    \t distance: {distance: \&quot;0.11\&quot;, longitude: \&quot;80.64646479999999\&quot;, latitude: \&quot;16.5051486\&quot;}\n    \t myBuddies: true\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      dishRating: [\&quot;RECOMMENDED\&quot;, \&quot;MUST EAT\&quot;]\n    \t inputString: \&quot;pramila@palate\&quot;\n    \t inputSearchType: PROFILE #value should be VENDOR, PROFILE\n    \t diet: [VEG,VEGAN, NON_VEG]\n    \t timeSince: \&quot;500-Hrs\&quot;\n    \t distance: {distance: \&quot;0.11\&quot;, longitude: \&quot;80.64646479999999\&quot;, latitude: \&quot;16.5051486\&quot;}\n    \t myBuddies: true\n    \t isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5046,6 +5131,7 @@ if (tasterid != null) {
     	 timeSince: &quot;500-Hrs&quot;
     	 distance: {distance: &quot;0.11&quot;, longitude: &quot;80.64646479999999&quot;, latitude: &quot;16.5051486&quot;}
     	 myBuddies: true
+    	 isHomeMade: false
 
     recordsPerPage: 10
     pageNo: 1
@@ -5068,6 +5154,7 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
 
@@ -5084,7 +5171,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Barkaas Arabic Restaurant\&quot;\n    \t inputSearchType: VENDOR\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Barkaas Arabic Restaurant\&quot;\n    \t inputSearchType: VENDOR\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5127,6 +5214,7 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
 
@@ -5143,7 +5231,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Venkat\&quot;\n    \t inputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Venkat\&quot;\n    \t inputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5186,8 +5274,68 @@ if (tasterid != null) {
         vendorLocality
         ratingdescription
         creationtime
+        isHomeMade
     }
 }
+</stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Search TasterReview (by Homemade)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">query{
+    searchTasterReviews(input: {
+      isHomeMade: false
+
+    recordsPerPage: 10
+    pageNo: 1
+    }){
+        socialMsgImageId
+        validimage
+        tasterId
+        rating
+        tasterPhotoId
+        diet
+        latitude
+        longitude
+        distanceInKM
+        userid
+        userfirstname
+        handle
+        userprofilephotoid
+        vendorid
+        vendorname
+        vendorLocality
+        ratingdescription
+        creationtime
+        isHomeMade
+    }
+}
+
 </stringProp>
           <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5477,7 +5625,7 @@ if (tasterid != null) {
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/signup</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/signup</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5490,13 +5638,50 @@ if (tasterid != null) {
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
+              <stringProp name="51511">403</stringProp>
+              <stringProp name="51579">429</stringProp>
               <stringProp name="51517">409</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">8</intProp>
+            <intProp name="Assertion.test_type">40</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import java.nio.charset.StandardCharsets
+import org.apache.commons.codec.binary.Base64
+
+// current UTC time in milliseconds
+def currentTimeInMilliseconds = new Date().getTime().toString()
+
+def encrypt(text) {
+    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
+    def iv = &quot;palatepowerfoodi&quot;
+
+    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
+    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
+
+    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
+    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
+
+    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
+    return Base64.encodeBase64String(encryptedBytes)
+}
+
+def encryptedTime = encrypt(currentTimeInMilliseconds)
+
+// Set header in JMeter
+sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Signup (incorrect phonenumber)" enabled="true">
@@ -5516,7 +5701,7 @@ if (tasterid != null) {
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/signup</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/signup</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5537,6 +5722,41 @@ if (tasterid != null) {
             <intProp name="Assertion.test_type">8</intProp>
           </ResponseAssertion>
           <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import java.nio.charset.StandardCharsets
+import org.apache.commons.codec.binary.Base64
+
+// current UTC time in milliseconds
+def currentTimeInMilliseconds = new Date().getTime().toString()
+
+def encrypt(text) {
+    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
+    def iv = &quot;palatepowerfoodi&quot;
+
+    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
+    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
+
+    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
+    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
+
+    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
+    return Base64.encodeBase64String(encryptedBytes)
+}
+
+def encryptedTime = encrypt(currentTimeInMilliseconds)
+
+// Set header in JMeter
+sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login (user not present)" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5545,7 +5765,8 @@ if (tasterid != null) {
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;phonenumber&quot;: &quot;919000000909&quot;&#xd;
+    &quot;phonenumber&quot;: &quot;919000000909&quot;,&#xd;
+    &quot;otpoptin&quot;: true&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -5555,7 +5776,7 @@ if (tasterid != null) {
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/login</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/login</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5568,13 +5789,49 @@ if (tasterid != null) {
         <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
             <collectionProp name="Asserion.test_strings">
-              <stringProp name="51512">404</stringProp>
+              <stringProp name="51511">403</stringProp>
+              <stringProp name="51579">429</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">8</intProp>
+            <intProp name="Assertion.test_type">40</intProp>
           </ResponseAssertion>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
+import java.nio.charset.StandardCharsets
+import org.apache.commons.codec.binary.Base64
+
+// current UTC time in milliseconds
+def currentTimeInMilliseconds = new Date().getTime().toString()
+
+def encrypt(text) {
+    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
+    def iv = &quot;palatepowerfoodi&quot;
+
+    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
+    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
+
+    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
+    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
+
+    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
+    return Base64.encodeBase64String(encryptedBytes)
+}
+
+def encryptedTime = encrypt(currentTimeInMilliseconds)
+
+// Set header in JMeter
+sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirm Login (wrong otp)" enabled="true">
@@ -5585,7 +5842,8 @@ if (tasterid != null) {
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
     &quot;phonenumber&quot;: &quot;919405728957&quot;,&#xd;
-    &quot;confirmationCode&quot;: &quot;123456&quot;&#xd;
+    &quot;confirmationCode&quot;: &quot;123456&quot;,&#xd;
+    &quot;otpoptin&quot;: true&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -5595,7 +5853,7 @@ if (tasterid != null) {
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/confirm-login</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/confirm-login</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5631,7 +5889,7 @@ if (tasterid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="operations" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;query&quot;: &quot;mutation SaveUser($input: UserInput!)  { saveUser(input: $input)   { success      user {          handle         firstname          lastname         email         profilephotoid         bio       }    }  }&quot;, &quot;variables&quot;:  {&quot;input&quot;:      {    &quot;handle&quot;:&quot;Divya&quot;,    &quot;firstname&quot;:&quot;Riya&quot;,    &quot;lastname&quot;:&quot;D&quot;,    &quot;gender&quot;:&quot;Female&quot;,    &quot;dob&quot;:&quot;2000-01-22&quot;,    &quot;email&quot;:&quot;riya@gmail.com&quot;,    &quot;bio&quot;: &quot;Foodie&quot;   }  } }</stringProp>
+                <stringProp name="Argument.value">{ &quot;query&quot;: &quot;mutation SaveUser($input: UserInput!) { saveUser(input: $input) { success user { firstname lastname profilephotoid, bio, dob, gender } } }&quot;, &quot;variables&quot;: { &quot;input&quot;: { &quot;handle&quot;: &quot;Venkat&quot;, &quot;firstname&quot;: &quot;Venkateswararao&quot;, &quot;lastname&quot;: &quot;K&quot;, &quot;gender&quot;: &quot;Male&quot;, &quot;dob&quot;: &quot;1992-02-05&quot;, &quot;email&quot;: &quot;ajayjg01@gmail.com&quot;, &quot;bio&quot;: &quot;IT Student&quot; } } }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">operations</stringProp>
@@ -6273,7 +6531,7 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    RatingCountOfDish(input:{\n        dishId:4\n        vendorId:157\n    }){\n        ratingId\n        ratingDescription\n        ratingCount\n        ratingPercentage\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    RatingCountOfDish(input:{\n        dishId:4\n//        vendorId:157\n    }){\n        ratingId\n        ratingDescription\n        ratingCount\n        ratingPercentage\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -6293,7 +6551,7 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
           <stringProp name="GraphQLHTTPSampler.query">query{
     RatingCountOfDish(input:{
         dishId:4
-        vendorId:157
+//        vendorId:157
     }){
         ratingId
         ratingDescription
@@ -6313,7 +6571,7 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    RatingCountOfDish(input:{\n        dishId:370\n        vendorId:4\n    }){\n        ratingId\n        ratingDescription\n        ratingCount\n        ratingPercentage\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    RatingCountOfDish(input:{\n//        dishId:370\n        vendorId:4\n    }){\n        ratingId\n        ratingDescription\n        ratingCount\n        ratingPercentage\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -6332,48 +6590,13 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
           <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query{
     RatingCountOfDish(input:{
-        dishId:370
+//        dishId:370
         vendorId:4
     }){
         ratingId
         ratingDescription
         ratingCount
         ratingPercentage
-    }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Review Count of User (for userid not in db)" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument" enabled="true">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    ReviewCountOfUser(userId: 2){\n        userId\n        reviewCount\n    }\n}&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
-          <stringProp name="GraphQLHTTPSampler.query">query{
-    ReviewCountOfUser(userId: 2){
-        userId
-        reviewCount
     }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
@@ -6464,57 +6687,10 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Reaction Count (for reviewId not in db)" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument" enabled="true">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;# here you can send reviewIds and reactionType should be enum ( LIKE, FAVOURITE, SHARE ). \nquery{\n    reactionCount(input:{\n        reviewId:5,\n        reactionType: LIKE\n    }){\n        userCount\n        likedByMe\n        myFavourite\n        sharedByMe\n        userDetails{\n            userid\n            handle\n            userfirstname\n        }\n    }\n}&quot;}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
-          <stringProp name="GraphQLHTTPSampler.query"># here you can send reviewIds and reactionType should be enum ( LIKE, FAVOURITE, SHARE ). 
-query{
-    reactionCount(input:{
-        reviewId:5,
-        reactionType: LIKE
-    }){
-        userCount
-        likedByMe
-        myFavourite
-        sharedByMe
-        userDetails{
-            userid
-            handle
-            userfirstname
-        }
-    }
-}</stringProp>
-          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree/>
         <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
           <collectionProp name="Asserion.test_strings">
             <stringProp name="-1294635157">errors</stringProp>
             <stringProp name="184708874">&quot;success&quot;:false</stringProp>
-            <stringProp name="446847076">{&quot;data&quot;:{&quot;RatingCountOfDish&quot;:[{&quot;ratingId&quot;:5,&quot;ratingDescription&quot;:&quot;MUST EAT&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0},{&quot;ratingId&quot;:4,&quot;ratingDescription&quot;:&quot;RECOMMENDED&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0},{&quot;ratingId&quot;:3,&quot;ratingDescription&quot;:&quot;AVERAGE&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0},{&quot;ratingId&quot;:2,&quot;ratingDescription&quot;:&quot;EDIBLE&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0},{&quot;ratingId&quot;:1,&quot;ratingDescription&quot;:&quot;AVOID&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0},{&quot;ratingId&quot;:0,&quot;ratingDescription&quot;:&quot;DON&apos;T EAT&quot;,&quot;ratingCount&quot;:0,&quot;ratingPercentage&quot;:0.0}]}</stringProp>
           </collectionProp>
           <stringProp name="Assertion.custom_message"></stringProp>
           <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
@@ -6543,7 +6719,11 @@ query{
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">app-info</stringProp>
-            <stringProp name="Header.value">{ &quot;package_name&quot;: &quot;com.power.palate&quot;, &quot;deviceToken&quot;: &quot;de60d605b2732&quot;, &quot;manufacturer&quot;: &quot;Xiaomi&quot;, &quot;device_model&quot;: &quot;Redmi 8A Dual&quot;, &quot;timestamp&quot;: &quot;1700664807101&quot;, &quot;isPhysicalDevice&quot;: true, &quot;app_version&quot;: &quot;1.4.4&quot;,    &quot;platform&quot;: &quot;Android&quot;}</stringProp>
+            <stringProp name="Header.value">{ &quot;package_name&quot;: &quot;com.power.palate&quot;, &quot;deviceToken&quot;: &quot;de60d605b2732138&quot;, &quot;manufacturer&quot;: &quot;Xiaomi&quot;, &quot;device_model&quot;: &quot;Redmi 8A Dual&quot;, &quot;timestamp&quot;: &quot;1700664807101&quot;, &quot;isPhysicalDevice&quot;: true, &quot;app_version&quot;: &quot;1.4.4&quot;,    &quot;platform&quot;: &quot;Android&quot;}</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Connection</stringProp>
+            <stringProp name="Header.value">keep-alive</stringProp>
           </elementProp>
         </collectionProp>
       </HeaderManager>
