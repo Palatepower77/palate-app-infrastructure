@@ -5459,7 +5459,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          tasterVendorTypes { key value },\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5493,6 +5493,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
               currencySymbol 
           }
           diet {key value} ,
+          tasterVendorTypes { key value },
           dishTypes { key value category }, 
           timeRange { key value }, 
           cuisineType { key value }, 
@@ -5516,7 +5517,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;91\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n          currencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query { \n    domainValues (input: \n        { searchString: \&quot;91\&quot;,\n          page: 1, \n          recordsPerPage: 10 \n        })\n        {\n        \tcurrencies\n          { \n              countryName \n              countryCode \n              currencyName \n              currencyCode \n              isoCode\n              currencySymbol \n          }\n          diet {key value} ,        \t\n          tasterVendorTypes { key value },\n          dishTypes { key value category }, \n          timeRange { key value }, \n          cuisineType { key value }, \n          vendorTypes { key value }, \n          ratings { key value }, \n          dishNames { key value },\n          allCuisineType{ key value },\n        \tallVendorTypes{ key value }\n          assetsBaseUrl\n        } \n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5540,7 +5541,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
           recordsPerPage: 10 
         })
         {
-          currencies
+        	currencies
           { 
               countryName 
               countryCode 
@@ -5549,7 +5550,8 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
               isoCode
               currencySymbol 
           }
-          diet {key value} ,
+          diet {key value} ,        	
+          tasterVendorTypes { key value },
           dishTypes { key value category }, 
           timeRange { key value }, 
           cuisineType { key value }, 
