@@ -91,7 +91,7 @@ def json = new JsonSlurper().parseText(response)
 
 def tokendata = &quot;&quot;
 if (json?.accessToken != null) {
-    tokendata = json.accessToken.replace(&quot;Bearer &quot;, &quot;&quot;)
+    tokendata = json.accessToken
     log.info(&quot;Token value: ${tokendata}&quot;)
 } else {
     log.warn(&quot;Access token not found in the JSON response.&quot;)
@@ -6798,7 +6798,7 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Authorization</stringProp>
-            <stringProp name="Header.value">Bearer ${token}</stringProp>
+            <stringProp name="Header.value">${__P(tokenData)}</stringProp>
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Content-Type</stringProp>
