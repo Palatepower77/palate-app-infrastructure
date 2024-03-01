@@ -11,101 +11,6 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Refreshh Token" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </ThreadGroup>
-      <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments"/>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/v2/refresh-token/22/${__P(TOKEN)}</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec
-import javax.crypto.spec.SecretKeySpec
-import java.nio.charset.StandardCharsets
-import org.apache.commons.codec.binary.Base64
-
-// current UTC time in milliseconds
-def currentTimeInMilliseconds = new Date().getTime().toString()
-
-def encrypt(text) {
-    def secretKey = &apos;&apos;&apos;mg^%3$&amp;5Hj6tu$$7&amp;*6r657ghIljhvh4&apos;&apos;&apos;
-    def iv = &quot;palatepowerfoodi&quot;
-
-    def key = new SecretKeySpec(secretKey.getBytes(StandardCharsets.UTF_8), &quot;AES&quot;)
-    def ivBytes = new IvParameterSpec(iv.getBytes(StandardCharsets.UTF_8))
-
-    def cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;)
-    cipher.init(Cipher.ENCRYPT_MODE, key, ivBytes)
-
-    def encryptedBytes = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8))
-    return Base64.encodeBase64String(encryptedBytes)
-}
-
-def encryptedTime = encrypt(currentTimeInMilliseconds)
-
-// Set header in JMeter
-sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Header(&quot;x-palate-key&quot;, encryptedTime))
-</stringProp>
-          </JSR223PreProcessor>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">import groovy.json.JsonSlurper
-
-def response = prev.getResponseDataAsString()
-def json = new JsonSlurper().parseText(response)
-
-def tokendata = &quot;&quot;
-if (json?.accessToken != null) {
-    tokendata = json.accessToken.replace(&quot;Bearer &quot;, &quot;&quot;)
-    log.info(&quot;Token value: ${tokendata}&quot;)
-} else {
-    log.warn(&quot;Access token not found in the JSON response.&quot;)
-}
-log.info(&quot;Token value: ${tokendata}&quot;)
-if (tokendata != &quot;&quot;) {
-    props.put(&quot;tokenData&quot;, tokendata.toString())
-    log.info(&quot;Token data stored: ${tokendata}&quot;)
-}
-</stringProp>
-          </JSR223PostProcessor>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User API" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1829,7 +1734,7 @@ if (tasterid != null &amp;&amp; tasterphotoid != null) {
     props.put(&quot;tasterId&quot;, tasterid.toString())
     props.put(&quot;tasterPhotoId&quot;, tasterphotoid.toString())
 	// Adding a time interval of 5 seconds (5000 milliseconds)
-//    Thread.sleep(3000)
+    Thread.sleep(3000)
 }
 
 </stringProp>
@@ -1901,7 +1806,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
     props.put(&quot;invalidTasterId&quot;, invalidtasterid.toString())
     props.put(&quot;invalidTasterPhotoId&quot;, tasterphotoid.toString())
     // Adding a time interval of 5 seconds (5000 milliseconds)
-//    Thread.sleep(3000)
+    Thread.sleep(3000)
 }
 </stringProp>
           </JSR223PostProcessor>
@@ -6798,7 +6703,7 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
           </elementProp>
           <elementProp name="token" elementType="Argument">
             <stringProp name="Argument.name">token</stringProp>
-            <stringProp name="Argument.value">${__P(tokenData)}</stringProp>
+            <stringProp name="Argument.value">${__P(TOKEN)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">Enter your token instead of  ${__P(TOKEN)}</stringProp>
           </elementProp>
