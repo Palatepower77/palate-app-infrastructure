@@ -127,6 +127,10 @@ if (tokendata != &quot;&quot;) {
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="script">import org.apache.commons.lang3.RandomUtils
 import org.apache.jmeter.services.FileServer
+import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy
+import org.apache.jmeter.protocol.http.util.HTTPFileArg
+import org.apache.jmeter.protocol.http.control.HeaderManager
+import groovy.json.JsonSlurper
 
 // Define function to select a random image path
 def getRandomImagePath() {
@@ -152,6 +156,75 @@ vars.put(&quot;RANDOM_IMAGE_PATH&quot;, randomImagePath)
 
 // Log stored image path
 log.info(&quot;Path ----------------------------------------------------------: &quot; + vars.get(&quot;RANDOM_IMAGE_PATH&quot;))
+
+
+
+// Create an HTTPSamplerProxy instance
+def httpSampler = new HTTPSamplerProxy()
+
+// Get the domain value from user-defined variables
+def domain = vars.get(&quot;baseURL&quot;)
+
+// Set the domain of the server you want to request
+httpSampler.setDomain(domain)
+httpSampler.setPath(&quot;/review-api/analyze-image&quot;) // Adjust the path according to your API endpoint
+httpSampler.setMethod(&quot;POST&quot;) // Set the HTTP method to POST
+
+// Create an HTTPFileArg instance for the file upload
+def fileArg = new HTTPFileArg()
+fileArg.setPath(vars.get(&quot;RANDOM_IMAGE_PATH&quot;)) // Set the path to your image file
+
+// Add the HTTPFileArg to the HTTPSamplerProxy
+httpSampler.setHTTPFiles(fileArg)
+
+// Add an HTTP Header Manager to the HTTP Sampler
+def headerManager = new HeaderManager()
+def authorizationHeader = props.get(&quot;tokenData&quot;)
+headerManager.add(new org.apache.jmeter.protocol.http.control.Header(&quot;Authorization&quot;, authorizationHeader))
+httpSampler.setHeaderManager(headerManager)
+
+// Make the HTTP request
+def result = httpSampler.sample()
+
+// Check the response data
+def responseData = result.getResponseDataAsString()
+log.info(&quot;Response Data: ${responseData}&quot;)
+
+// Parse the JSON response
+def jsonSlurper = new JsonSlurper()
+def jsonResponse = jsonSlurper.parseText(responseData)
+
+// Initialize a variable to indicate the test result
+def testResult = true
+
+// Check if the response contains the expected data
+if (jsonResponse instanceof Map &amp;&amp; jsonResponse.containsKey(&quot;isFood&quot;)) {
+    // Get the value of isFood
+    def isFoodValue = jsonResponse.isFood
+    
+    // Your logic here based on the isFood value
+    log.info(&quot;Response contains data indicating food.&quot;)
+    log.info(&quot;Is Food: ${isFoodValue}&quot;)
+
+    if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/paneer-koftaa.jpg&quot; &amp;&amp; isFoodValue == false) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    } else if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/unicorn.jpg&quot; &amp;&amp; isFoodValue == true) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    } else if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/tourists-at-victoria-falls.jpg&quot; &amp;&amp; isFoodValue == true) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    }
+} else {
+    // Your logic here if the response does not contain the expected data
+    log.info(&quot;Response does not contain data indicating food.&quot;)
+}
+
+// Set a JMeter property to indicate the test result
+props.put(&quot;testResult&quot;, String.valueOf(testResult))
+
+
 </stringProp>
         </JSR223PreProcessor>
         <hashTree/>
@@ -159,7 +232,7 @@ log.info(&quot;Path ----------------------------------------------------------: 
           <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
             <collectionProp name="HTTPFileArgs.files">
               <elementProp name="/${RANDOM_IMAGE_PATH}" elementType="HTTPFileArg">
-                <stringProp name="File.mimetype">image/jpeg</stringProp>
+                <stringProp name="File.mimetype">application/octet-stream</stringProp>
                 <stringProp name="File.path">/${RANDOM_IMAGE_PATH}</stringProp>
                 <stringProp name="File.paramname"></stringProp>
               </elementProp>
@@ -182,7 +255,30 @@ log.info(&quot;Path ----------------------------------------------------------: 
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="JSR223 Assertion" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">// Retrieve the test result property
+def testResult = props.get(&quot;testResult&quot;)
+
+log.info(&quot;testResult:---------------------------------------------------------- ${testResult}&quot;)
+
+// Check if the test passed or failed
+if (testResult == &quot;true&quot;) {
+    // Test passed
+    AssertionResult.setFailure(false) // Set the assertion result to pass
+} else {
+    // Test failed
+    AssertionResult.setFailure(true) // Set the assertion result to fail
+    AssertionResult.setFailureMessage(&quot;Test failed: The response does not contain expected data.&quot;) // Optionally, provide a failure message
+}
+</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User API" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
