@@ -106,6 +106,180 @@ if (tokendata != &quot;&quot;) {
           <hashTree/>
         </hashTree>
       </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Analyze Image Testing" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import org.apache.commons.lang3.RandomUtils
+import org.apache.jmeter.services.FileServer
+import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy
+import org.apache.jmeter.protocol.http.util.HTTPFileArg
+import org.apache.jmeter.protocol.http.control.HeaderManager
+import groovy.json.JsonSlurper
+
+// Define function to select a random image path
+def getRandomImagePath() {
+    def imageDirectory = &quot;images/imagesData.csv&quot;
+    def lines = []
+
+    new File(imageDirectory).eachLine { line -&gt;
+        lines.add(line)
+    }
+
+    // Select a random line (image path) from the list
+    return lines.get(RandomUtils.nextInt(0, lines.size()))
+}
+
+// Get a random image path
+def randomImagePath = getRandomImagePath()
+
+// Log selected image path
+log.info(&quot;Selected Image Path: ${randomImagePath}&quot;)
+
+// Store selected image path in JMeter variable
+vars.put(&quot;RANDOM_IMAGE_PATH&quot;, randomImagePath)
+
+// Log stored image path
+log.info(&quot;Path ----------------------------------------------------------: &quot; + vars.get(&quot;RANDOM_IMAGE_PATH&quot;))
+
+
+
+// Create an HTTPSamplerProxy instance
+def httpSampler = new HTTPSamplerProxy()
+
+// Get the domain value from user-defined variables
+def domain = vars.get(&quot;baseURL&quot;)
+
+// Set the domain of the server you want to request
+httpSampler.setDomain(domain)
+httpSampler.setPath(&quot;/review-api/analyze-image&quot;) // Adjust the path according to your API endpoint
+httpSampler.setMethod(&quot;POST&quot;) // Set the HTTP method to POST
+
+// Create an HTTPFileArg instance for the file upload
+def fileArg = new HTTPFileArg()
+fileArg.setPath(vars.get(&quot;RANDOM_IMAGE_PATH&quot;)) // Set the path to your image file
+
+// Add the HTTPFileArg to the HTTPSamplerProxy
+httpSampler.setHTTPFiles(fileArg)
+
+// Add an HTTP Header Manager to the HTTP Sampler
+def headerManager = new HeaderManager()
+def authorizationHeader = props.get(&quot;tokenData&quot;)
+headerManager.add(new org.apache.jmeter.protocol.http.control.Header(&quot;Authorization&quot;, authorizationHeader))
+httpSampler.setHeaderManager(headerManager)
+
+// Make the HTTP request
+def result = httpSampler.sample()
+
+// Check the response data
+def responseData = result.getResponseDataAsString()
+log.info(&quot;Response Data: ${responseData}&quot;)
+
+// Parse the JSON response
+def jsonSlurper = new JsonSlurper()
+def jsonResponse = jsonSlurper.parseText(responseData)
+
+// Initialize a variable to indicate the test result
+def testResult = true
+
+// Check if the response contains the expected data
+if (jsonResponse instanceof Map &amp;&amp; jsonResponse.containsKey(&quot;isFood&quot;)) {
+    // Get the value of isFood
+    def isFoodValue = jsonResponse.isFood
+    
+    // Your logic here based on the isFood value
+    log.info(&quot;Response contains data indicating food.&quot;)
+    log.info(&quot;Is Food: ${isFoodValue}&quot;)
+
+    if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/paneer-koftaa.jpg&quot; &amp;&amp; isFoodValue == false) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    } else if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/unicorn.jpg&quot; &amp;&amp; isFoodValue == true) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    } else if (vars.get(&quot;RANDOM_IMAGE_PATH&quot;) == &quot;images/tourists-at-victoria-falls.jpg&quot; &amp;&amp; isFoodValue == true) {
+        log.info(&quot;Test failed.&quot;)
+        testResult = false
+    }
+} else {
+    // Your logic here if the response does not contain the expected data
+    log.info(&quot;Response does not contain data indicating food.&quot;)
+}
+
+// Set a JMeter property to indicate the test result
+props.put(&quot;testResult&quot;, String.valueOf(testResult))
+
+
+</stringProp>
+        </JSR223PreProcessor>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Analyze Image For Food" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="/${RANDOM_IMAGE_PATH}" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">application/octet-stream</stringProp>
+                <stringProp name="File.path">/${RANDOM_IMAGE_PATH}</stringProp>
+                <stringProp name="File.paramname"></stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/analyze-image</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="JSR223 Assertion" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">// Retrieve the test result property
+def testResult = props.get(&quot;testResult&quot;)
+
+log.info(&quot;testResult:---------------------------------------------------------- ${testResult}&quot;)
+
+// Check if the test passed or failed
+if (testResult == &quot;true&quot;) {
+    // Test passed
+    AssertionResult.setFailure(false) // Set the assertion result to pass
+} else {
+    // Test failed
+    AssertionResult.setFailure(true) // Set the assertion result to fail
+    AssertionResult.setFailureMessage(&quot;Test failed: The response does not contain expected data.&quot;) // Optionally, provide a failure message
+}
+</stringProp>
+          </JSR223Assertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User API" enabled="true">
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4970,7 +5144,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultTasterSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n        socialMsgImageId\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        validimage\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    defaultTasterSearch(input: {\n        recordsPerPage: 10\n        pageNo: 1\n    }){\n        socialMsgImageId\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        validimage\n        isHomeMade\n        dynamicLink        \n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5010,6 +5184,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         creationtime
         validimage
         isHomeMade
+        dynamicLink        
     }
 }</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
@@ -5024,7 +5199,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       vendorId : 99\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       vendorId : 99\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5067,6 +5242,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 </stringProp>
@@ -5082,7 +5258,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       userId: 49\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       userId: 49\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5125,6 +5301,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 
@@ -5141,7 +5318,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       tasterId: 20\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n       tasterId: 342\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5160,7 +5337,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
           <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
           <stringProp name="GraphQLHTTPSampler.query">query{
     searchTasterReviews(input: {
-       tasterId: 20
+       tasterId: 342
 
     recordsPerPage: 10
     pageNo: 1
@@ -5184,6 +5361,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 
@@ -5200,7 +5378,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      dishRating: [\&quot;RECOMMENDED\&quot;, \&quot;MUST EAT\&quot;]\n    \t inputString: \&quot;pramila@palate\&quot;\n    \t inputSearchType: PROFILE #value should be VENDOR, PROFILE\n    \t diet: [VEG,VEGAN, NON_VEG]\n    \t timeSince: \&quot;500-Hrs\&quot;\n    \t distance: {distance: \&quot;0.11\&quot;, longitude: \&quot;80.64646479999999\&quot;, latitude: \&quot;16.5051486\&quot;}\n    \t myBuddies: true\n    \t isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      dishRating: [\&quot;RECOMMENDED\&quot;, \&quot;MUST EAT\&quot;]\n    \t inputString: \&quot;pramila@palate\&quot;\n    \t inputSearchType: PROFILE #value should be VENDOR, PROFILE\n    \t diet: [VEG,VEGAN,NON_VEG,PLANT_BASED]\n    \t timeSince: \&quot;500-Hrs\&quot;\n    \t distance: {distance: \&quot;0.11\&quot;, longitude: \&quot;80.64646479999999\&quot;, latitude: \&quot;16.5051486\&quot;}\n    \t myBuddies: true\n    \t isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5222,7 +5400,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
       dishRating: [&quot;RECOMMENDED&quot;, &quot;MUST EAT&quot;]
     	 inputString: &quot;pramila@palate&quot;
     	 inputSearchType: PROFILE #value should be VENDOR, PROFILE
-    	 diet: [VEG,VEGAN, NON_VEG]
+    	 diet: [VEG,VEGAN,NON_VEG,PLANT_BASED]
     	 timeSince: &quot;500-Hrs&quot;
     	 distance: {distance: &quot;0.11&quot;, longitude: &quot;80.64646479999999&quot;, latitude: &quot;16.5051486&quot;}
     	 myBuddies: true
@@ -5250,6 +5428,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 
@@ -5266,7 +5445,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Barkaas Arabic Restaurant\&quot;\n    \t inputSearchType: VENDOR\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Barkaas Arabic Restaurant\&quot;\n    \t inputSearchType: VENDOR\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5310,6 +5489,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 
@@ -5326,7 +5506,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Venkat\&quot;\n    \t inputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n    \t inputString: \&quot;Venkat\&quot;\n    \t inputSearchType: PROFILE\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5370,6 +5550,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 </stringProp>
@@ -5385,7 +5566,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;query{\n    searchTasterReviews(input: {\n      isHomeMade: false\n\n    recordsPerPage: 10\n    pageNo: 1\n    }){\n        socialMsgImageId\n        validimage\n        tasterId\n        rating\n        tasterPhotoId\n        diet\n        latitude\n        longitude\n        distanceInKM\n        userid\n        userfirstname\n        handle\n        userprofilephotoid\n        vendorid\n        vendorname\n        vendorLocality\n        ratingdescription\n        creationtime\n        isHomeMade\n        dynamicLink\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -5428,10 +5609,47 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         ratingdescription
         creationtime
         isHomeMade
+        dynamicLink
     }
 }
 
 </stringProp>
+          <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Generate Dynamic Link (TasterReview)" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument" enabled="true">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation{\n    GenerateTastersDynamicLink(input:{\n         entity: TASTERREVIEW\n        entityId: 309\n        deepLink: \&quot;https://www.palatepower.com/splash/309\&quot;\n    })\n}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/search-review-api/graphql</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="GraphQLHTTPSampler.operationName"></stringProp>
+          <stringProp name="GraphQLHTTPSampler.query">mutation{
+    GenerateTastersDynamicLink(input:{
+         entity: TASTERREVIEW
+        entityId: 309
+        deepLink: &quot;https://www.palatepower.com/splash/309&quot;
+    })
+}</stringProp>
           <stringProp name="GraphQLHTTPSampler.variables"></stringProp>
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
