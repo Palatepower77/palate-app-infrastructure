@@ -25,7 +25,7 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.path">/user-api/user/v2/refresh-token/22/${__P(TOKEN)}</stringProp>
+          <stringProp name="HTTPSampler.path">/user-api/user/v2/refresh-token/152/eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.aZbylQX1stL44OaNE3sydceK9TyBu_sc65AtZ5lx6SrO1yVGN45O8pqmjUn7ycn1JnA_MhNFlQEduz2B70FA-MmZRf992JHFNmItV-89wxHuLb7mQhbHKWuaxLX7maCXRXI0X4kgxUXfRevpBT41qo3R8QaBHhkZTp5P9KpwQb73OKOOwJw-st3Kyqkx5Ob1Bm4xgVaRNXOceA4HeNlWHaepuatLcxXGCGhcxVWvCbL9AgHZ_PXKeGClX7VDZgAP8df7NNsipIvdRwBVKx8rQ_Z8rCF13072ZtnKKtoQUXnbukyueNuRFV_FrC7jRixQAhxWyWE2_fyW2Lrfz-XdfQ.AF16d5eFEh3u65Pu.qOCwItCoTTXn-xpOC6zXC2Lq5_QKDPZwOkzvPIQy3DQus1am2B0Z4PHQIjm7-vOQ8f1siJplxhyfMYDuDMJl1wsSb9H1ZZhNRfvKz0YsiXkmdcDg_In1xFTMUgPBOdiQ4wKtmI-XeTgswLFh3VCxIpGLiq7dkNTTzH6z3YswkgJuItYcqm3iZFI_-H7H3Xp2nsAFEHsn4IWzP-fKg6zW6TMfhUhwuATomdMR_FmGzsGfZyXN900hgw1o0npxnXNSLpxIH8Yb-gdW2Hgy_NT1nu7AhszdOXiAFlcRGHlltJEYwQqNJC5h1UVxPbrbytm6JNT82b8-fpJg8IPWvYVBeJmaBOqxMhjbxCR0yLrdZ8mgl4SxcOSWqmjBDAejvEZcl9NzYvvAkX8ohRdQ9JZmBglk3Fh4zeI66PXgTNqWZ0C_8_7g3uLfWoEcbwNaSw2obVLi-BjAeoSBXqV4gugkHE8McXtGrFqOVI3yhFgyo1o0VPEoPOh6Db6CBr0L1qtqu2p3YmJNq5zSecsxMv1vSlptLknOJXFuhLRz_aWSanW-t5alkvtN6aoMnOKVLXXeC8bQcR9wS--h-6Q_AifM5deh3pWJetfOtaksqayDRCj9VDokNSBaABDL4_LkWgud8VkQxNKEt2JkHF-B98l--JbO1totNp5bv7xPL8wmdUjkrAzyZma2w7kXKDciuC1Sh435J24aoilI_KPyNcT4OL2v6IA6pyp3sk2m9ChgYbFn9QEb9_iQVss9zlMmOwx8LtMcikn5Jhd_9KzHDsVnwiK5xbZA9pTZmgUgcd_rY6gYuEgVUZsrs2oeyK-LSAp2WSGFpUTyJp73V03DIL8XSoLbOm2UIy91cw1UPmOYsJ_SmByLNF2g9NpHGrLfs8RRViJFVexVXKLW93YUKgoXFOgeobil_T0D_HiM4UecQYSkEwGXdg79kC9Zan4dWCXTb0iL8APAW8STJ1hFRtlOYlogChB8h5LAUArVWhOxo4rPB__Kr3oWIYrku5LduHBnO-_9Td_UHNzuwUwl6PZJTYAjRR9xMZ75NdaembjSTcnlJMwgYz7m62aphyfDxYydv-DBloODlD0zbp0sH6X41Q7Ll9-9QK4SMuhsHiQtJu8r95KL49aos6p3bvcAVE33hBRfiig2KssZP2SVlSIY8DkL4V0GoCc8TrqMf6vDHzTthRnaE9oyRMw8lXQrgM1Uvan4IXEKmglIO7hjocEhtMF_8k3fPdIiOthbLejaq1PF4BtT_nGUeYBOtHYO4XyrG7xeutkKhVYD9cNSzBE.qPfNpo1Xr7UfKkYTC04New</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -97,7 +97,7 @@ if (tokendata != &quot;&quot;) {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Analyze Image Testing">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Analyze Image Testing" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -108,7 +108,7 @@ if (tokendata != &quot;&quot;) {
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -216,7 +216,7 @@ props.put(&quot;testResult&quot;, String.valueOf(testResult))
 </stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Analyze Image For Food" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Analyze Image For Food">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/review-api/analyze-image</stringProp>
@@ -262,7 +262,7 @@ if (testResult == &quot;true&quot;) {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User API">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="User API" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -341,7 +341,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/user-api/user/v2/login</stringProp>
@@ -1083,7 +1083,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Review API">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Review API" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -1306,10 +1306,10 @@ if (reviewid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download Social Msg Image" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Download Social Msg Image">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
-          <stringProp name="HTTPSampler.path">/review-api/download-file/7E9A6076-87AB-41BF-91AC-5A938C051FAF.png?isSocialMessage=true</stringProp>
+          <stringProp name="HTTPSampler.path">/review-api/download-file/C5C043C6-6CC8-4A2F-855C-9F4E7475C7C9.png?isSocialMessage=true</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1603,7 +1603,7 @@ if (reviewid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Dish Review (with valid image)">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Dish Review (with valid image)" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
@@ -1642,7 +1642,7 @@ if (reviewid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Dish Review (with invalid image)">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Dish Review (with invalid image)" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
@@ -1890,7 +1890,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with valid image)">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with valid image)" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
@@ -1929,7 +1929,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with invalid image)">
+        <HTTPSamplerProxy guiclass="GraphQLHTTPSamplerGui" testclass="HTTPSamplerProxy" testname="Delete Taster Review (with invalid image)" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/review-api/graphql</stringProp>
@@ -1969,7 +1969,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search API">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Search API" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -4938,7 +4938,7 @@ if (invalidtasterid != null &amp;&amp; invalidtasterphotoid != null) {
         </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Common Data API">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Common Data API" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -5295,7 +5295,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login (user not present)" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login (user not present)">
           <stringProp name="HTTPSampler.domain">${baseURL}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.path">/user-api/user/v2/login</stringProp>
@@ -5317,10 +5317,11 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="51511">403</stringProp>
               <stringProp name="51579">429</stringProp>
+              <stringProp name="51512">404</stringProp>
             </collectionProp>
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
@@ -5328,7 +5329,7 @@ sampler.getHeaderManager().add(new org.apache.jmeter.protocol.http.control.Heade
             <intProp name="Assertion.test_type">40</intProp>
           </ResponseAssertion>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -6094,7 +6095,7 @@ mutation{ updateUserReaction(inputReaction:{ reviewId:578,
         </ResponseAssertion>
         <hashTree/>
       </hashTree>
-      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Authorization</stringProp>
@@ -6200,7 +6201,7 @@ Prod baseURL -&gt; palatepowerapi.link</stringProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table">
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
