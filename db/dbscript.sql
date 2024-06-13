@@ -508,3 +508,8 @@ GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
 
 ALTER TABLE IF EXISTS palateapp.vendor
     ADD CONSTRAINT maps_place_id_unique UNIQUE (mapsplaceid);
+
+-- INSERT COSTUM VENDOR ROWS IN FEATURETOOGLE TABLE
+INSERT INTO palateapp.featuretoggles (feature, value) VALUES
+('ALLOW_CUSTOM_VENDOR_FOR_TASTER', true),
+('ALLOW_CUSTOM_VENDOR_FOR_EATOUT', true);
