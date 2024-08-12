@@ -535,5 +535,29 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS palateapp.palatepoints
     OWNER to boss;
-GRANT ALL ON palateapp.applicationproperties to palate_r_user;
-GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
+GRANT ALL ON palateapp.palatepoints to palate_r_user;
+GRANT ALL ON palateapp.palatepoints to palate_rw_user;
+
+
+
+-- Table: palateapp.campaigns
+
+-- DROP TABLE IF EXISTS palateapp.campaigns;
+
+CREATE TABLE IF NOT EXISTS palateapp.campaigns
+(
+    id bigint NOT NULL DEFAULT nextval('palateapp.campaigns_id_seq'::regclass),
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    pointsperactivity integer NOT NULL,
+    type character varying COLLATE pg_catalog."default" NOT NULL,
+    startdate timestamp with time zone NOT NULL,
+    enddate timestamp with time zone NOT NULL,
+    CONSTRAINT campaigns_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.campaigns
+    OWNER to boss;
+GRANT ALL ON palateapp.campaigns to palate_r_user;
+GRANT ALL ON palateapp.campaigns to palate_rw_user;
