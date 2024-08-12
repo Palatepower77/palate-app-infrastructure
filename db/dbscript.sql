@@ -513,3 +513,27 @@ ALTER TABLE IF EXISTS palateapp.vendor
 INSERT INTO palateapp.featuretoggles (feature, value) VALUES
 ('ALLOW_CUSTOM_VENDOR_FOR_TASTER', true),
 ('ALLOW_CUSTOM_VENDOR_FOR_EATOUT', true);
+
+
+
+CREATE TABLE IF NOT EXISTS palateapp.palatepoints
+(
+    id bigserial,
+    userid bigint NOT NULL,
+    points integer NOT NULL,
+    description character varying COLLATE pg_catalog."default",
+    updatetime timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT palatepoints_pkey PRIMARY KEY (id),
+    CONSTRAINT userid FOREIGN KEY (userid)
+        REFERENCES palateapp.userdetail (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.palatepoints
+    OWNER to boss;
+GRANT ALL ON palateapp.applicationproperties to palate_r_user;
+GRANT ALL ON palateapp.applicationproperties to palate_rw_user;
