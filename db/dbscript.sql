@@ -561,3 +561,32 @@ ALTER TABLE IF EXISTS palateapp.campaigns
     OWNER to boss;
 GRANT ALL ON palateapp.campaigns to palate_r_user;
 GRANT ALL ON palateapp.campaigns to palate_rw_user;
+
+
+
+-- Table: palateapp.shareprofilelink
+
+-- DROP TABLE IF EXISTS palateapp.shareprofilelink;
+
+CREATE TABLE IF NOT EXISTS palateapp.shareprofilelink
+(
+    id bigserial,
+    userid bigint NOT NULL,
+    shareprofilelink character varying COLLATE pg_catalog."default" NOT NULL,
+    expiry timestamp with time zone NOT NULL,
+    creationtime timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT shareprofilelink_pkey PRIMARY KEY (id, shareprofilelink),
+    CONSTRAINT id FOREIGN KEY (userid)
+        REFERENCES palateapp.userdetail (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS palateapp.shareprofilelink
+    OWNER to boss;
+
+GRANT ALL ON palateapp.shareprofilelink to palate_r_user;
+GRANT ALL ON palateapp.shareprofilelink to palate_rw_user;
