@@ -3,7 +3,7 @@ name: Start or Stop Palate Dev ECS Services on cron
 on:
   schedule:
     - cron: '30 15 * * *'
-    - cron: '30 4 * * 1,2,3,4,5'
+    - cron: '30 3 * * 1,2,3,4,5'
   workflow_dispatch:
     inputs:
       actiontoperform:
