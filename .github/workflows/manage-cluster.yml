@@ -2,7 +2,7 @@ name: Start or Stop Palate Dev ECS Services on cron
 
 on:
   schedule:
-    - cron: '30 15 * * *'
+    - cron: '30 17 * * *'
     - cron: '30 3 * * 1,2,3,4,5'
   workflow_dispatch:
     inputs:
@@ -31,7 +31,7 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Start ECS Services
-      if: ${{ github.event.schedule == '30 4 * * 1,2,3,4,5' || env.ACTION_TO_PERFORM == 'Start' }}
+      if: ${{ github.event.schedule == '30 3 * * 1,2,3,4,5' || env.ACTION_TO_PERFORM == 'Start' }}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -42,7 +42,7 @@ jobs:
         aws ecs update-service --service palate-user-api-service --cluster palate-app-dev-cluster --desired-count 1 --force-new-deployment
 
     - name: Stop ECS Services
-      if: ${{ github.event.schedule == '30 15 * * *' || env.ACTION_TO_PERFORM == 'Stop'}}
+      if: ${{ github.event.schedule == '30 17 * * *' || env.ACTION_TO_PERFORM == 'Stop'}}
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
